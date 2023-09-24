@@ -1,11 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap");
 
+:root {
+     --color-rojo: #ff0000;
+     --color-verde: #6fd30c;
+     --amarillo-pikachu: #fff836dc;
+     --color-blanco: #ffffff;
+     --color-negro: #000;
+}
 /* Estilos para centrar el contenido */
 body {
      box-sizing: border-box;
      display: flex;
-     justify-content: center; /* Centra horizontalmente */
-     align-items: center; /* Centra verticalmente */
+     justify-content: center;
+     align-items: center;
      height: 100vh; /* Establece la altura del cuerpo para ocupar toda la pantalla */
      margin: 0; /* Elimina el margen predeterminado del cuerpo */
      background-image: url("img/pokemon_wallpaper___poke_ball_theme_by_0trinima0_dd2zouo-pre.jpg");
@@ -38,12 +45,12 @@ body {
      margin-top: 2em;
      display: flex;
      flex-direction: column;
-     justify-content: space-around;
+     justify-content: space-between;
      width: 18em;
      height: 30em;
      opacity: 0.98;
      text-align: center;
-     background-color: #ffffff;
+     background-color: var(--color-blanco);
      padding: 1em;
      border-radius: 20px;
      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
@@ -53,9 +60,15 @@ body {
      -o-border-radius: 20px;
 }
 
+#registroForm span {
+     font-size: 0.8em;
+     /* margin-bottom: 1.8em; */
+}
+
 #registroForm p {
      font-weight: bold;
      font-size: 2.5em;
+     margin: 10px;
 }
 
 #registroForm a {
@@ -72,11 +85,12 @@ body {
 
 /* Estilos para el botón Registrar */
 button[type="submit"] {
-     padding: 15px;
+     padding: 13px;
+     margin-bottom: 0.6em;
      margin-left: 10px;
-     margin-right: 10px;
-     background-color: #fff836dc;
-     color: #fff;
+     margin-right: 0.5em;
+     background-color: var(--amarillo-pikachu);
+     color: var(--color-blanco);
      border: 2px solid rgba(0, 0, 0, 0.5);
      cursor: pointer;
      font-weight: 800;
@@ -93,24 +107,10 @@ button[type="submit"] {
      -o-border-radius: 30px;
 }
 
-.pokeball {
-     z-index: 10;
-     top: 26.4em;
-     right: 0.4em;
-     position: absolute;
-     width: 80px;
-     height: 80px;
-     background-image: url(img/Poké_Ball_icon.svg.png);
-     background-size: cover;
-     background-repeat: no-repeat;
+button[type="submit"]:hover {
+     background-color: var(--color-rojo);
 }
 
-button[type="submit"]:hover {
-     background-color: #ff0000;
-}
-span {
-     background-color: purple;
-}
 button[type="submit"]:hover {
      transform: scale3d(1.1, 1.1, 0.2);
      -webkit-transform: scale3d(1.1, 1.1, 0.2);
@@ -127,13 +127,27 @@ input[type="email"] {
      flex-direction: column;
      width: 87%;
      padding: 10px;
-     margin: 0px 0px 10px 8px;
+     margin: 0px 0px -17px 8px;
      border: none;
      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
      outline: none;
      font-size: 16px;
 }
 
+.pokeball {
+     z-index: 10;
+     top: 26.4em;
+     right: 0.3em;
+     position: absolute;
+     width: 5em;
+     height: 5em;
+     background-image: url(img/Poké_Ball_icon.svg.png);
+     background-size: cover;
+     pointer-events: none;
+     background-repeat: no-repeat;
+}
+
+/* ESTILOS DEL MODAL */
 .modal {
      position: fixed;
      top: 0;
@@ -153,7 +167,7 @@ input[type="email"] {
 
 .modal__container {
      width: 90%;
-     background-color: #fff;
+     background-color: var(--color-blanco);
      margin: auto;
      max-width: 600px;
      max-height: 90%;
@@ -184,8 +198,8 @@ input[type="email"] {
 
 .modal__close {
      text-decoration: none;
-     color: #fff;
-     background-color: black;
+     color: var(--color-blanco);
+     background-color: #000;
      padding: 1em 3em;
      border: 1px solid;
      border-radius: 6px;
@@ -204,9 +218,10 @@ input[type="email"] {
 
 .modal__close:hover {
      color: black;
-     background-color: white;
+     background-color: var(--color-blanco);
 }
 
+/* FONT INPUT */
 ::-webkit-input-placeholder,
 :-ms-input-placeholder,
 :-moz-placeholder,
@@ -214,9 +229,35 @@ input[type="email"] {
      font-family: "Poppins", sans-serif;
 }
 
+/* INPUT IMPORTANTES */
 input,
 textarea,
 input:focus,
 textarea:focus {
      font-family: "Poppins", sans-serif;
 }
+
+/* Estilo por defecto del input */
+input {
+     border-bottom: 2px solid #000; /* Borde inferior negro */
+}
+
+/* Estilo para el input válido */
+input:valid {
+     border-bottom: 2px solid var(--color-verde); /* Borde inferior verde */
+}
+
+/* Estilo para el input inválido */
+input:invalid {
+     border-bottom: 2px solid var(--color-rojo); /* Borde inferior rojo */
+}
+
+.error-message {
+     display: none; /* Oculta el mensaje de error por defecto */
+}
+input:invalid + .error-message {
+     display: block; /* Muestra el mensaje de error cuando el input es inválido */
+     color: var(--color-rojo); /* Color del mensaje de error */
+}
+
+/* ARRIBA IMPORTANTE */

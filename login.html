@@ -11,16 +11,16 @@
 <body>
     <h1>Iniciar Sesión</h1>
     <form id="loginForm">
-        <label for="correoLogin">Correo Electrónico:</label>
-        <input type="email" id="correoLogin" required><br><br>
+        <input type="email" id="correoLogin" required placeholder="Correo Electronico"
+            pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+        <!-- <span id="formError" class="error-message">Ingresa un correo electronico registrado.</span> -->
 
-        <label for="contrasenaLogin">Contraseña:</label>
-        <input type="password" id="contrasenaLogin" required><br><br>
+        <input type="password" id="contrasenaLogin" required placeholder="Contraseña">
 
         <button type="submit">Iniciar Sesión</button>
     </form>
 
-    <section class="modal">
+    <!-- <section class="modal">
         <div class="modal__container">
             <img src="img/logo.png" class="modal__img">
             <h2 class="modal__title">¡Bienvenido al sitio!</h2>
@@ -29,7 +29,7 @@
                 deleniti maxime.</p>
             <a href="#" class="modal__close">Cerrar Modal</a>
         </div>
-    </section>
+    </section> -->
 
     <script src="login.js"></script>
 </body>

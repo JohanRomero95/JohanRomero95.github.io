@@ -1,12 +1,17 @@
 /* Estilos para centrar el contenido */
 body {
+     box-sizing: border-box;
      display: flex;
-     justify-content: center; /* Centra horizontalmente */
-     align-items: center; /* Centra verticalmente */
+     justify-content: center;
+     align-items: center;
      height: 100vh; /* Establece la altura del cuerpo para ocupar toda la pantalla */
      margin: 0; /* Elimina el margen predeterminado del cuerpo */
-     background-color: #f0f0f0; /* Cambia el color de fondo de la página */
-     font-family: Arial, sans-serif; /* Cambia la fuente del texto */
+     background-image: url("img/pokemon_wallpaper___poke_ball_theme_by_0trinima0_dd2zouo-pre.jpg");
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+     overflow-x: hidden;
+     font-family: "Poppins", sans-serif;
 }
 
 /* Estilos para el formulario */
