@@ -12,29 +12,25 @@ document
      .addEventListener("submit", function (e) {
           e.preventDefault();
 
+          // Obtener valores de los campos del formulario
           const nombre = document.getElementById("nombre").value;
           const correo = document.getElementById("correo").value;
           const contrasena = document.getElementById("contrasena").value;
 
-          // Expresiones regulares
+          // Validar los campos utilizando expresiones regulares
           if (!nombreRegex.test(nombre)) {
-               alert("Nombre no válido");
                return;
           }
 
           if (!correoRegex.test(correo)) {
-               alert("Correo electrónico inválido");
                return;
           }
 
           if (!contrasenaRegex.test(contrasena)) {
-               alert(
-                    "La contraseña debe tener al menos 6 caracteres, una mayúscula, una minúscula y un número."
-               );
                return;
           }
 
-          // Almacena los datos en el almacenamiento local
+          // Almacenar los datos en el almacenamiento local
           const usuario = {
                nombre,
                correo,
@@ -42,30 +38,20 @@ document
           };
           localStorage.setItem("usuario", JSON.stringify(usuario));
 
-          //  Funcion modal
-          const modal = openModal.addEventListener("click", (e) => {
+          // Función modal
+          const openModalClick = (e) => {
                e.preventDefault();
                modal1.classList.add("modal--show");
 
-               // Agrega un setTimeout para retrasar la redirección en 10 segundos
+               // Agregar un setTimeout para retrasar la redirección en 10 segundos
                setTimeout(() => {
                     window.location.href = "login.html";
                }, 10000);
-          });
-          // Agregar un evento de clic al fondo del modal
+          };
 
-          modal();
+          // Agregar un evento de clic al botón de registro
+          openModal.addEventListener("click", openModalClick);
 
-          //   localStorage.setItem("usuario", JSON.stringify(usuario));
-          //   alert("Registro exitoso");
-
+          // Redireccionar a la página de inicio de sesión
           window.location.href = "login.html";
      });
-
-// modalBackground.addEventListener("click", (event) => {
-//      // Verificar si el clic se realizó fuera del contenido del modal
-//      if (event.target === modalBackground) {
-//           // Cerrar el modal
-//           modal.style.display = "none"; // O utiliza alguna otra forma de ocultar el modal
-//      }
-// });
