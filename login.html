@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <h1>Iniciar Sesión</h1>
+    <form id="loginForm">
+        <label for="correoLogin">Correo Electrónico:</label>
+        <input type="email" id="correoLogin" required><br><br>
+
+        <label for="contrasenaLogin">Contraseña:</label>
+        <input type="password" id="contrasenaLogin" required><br><br>
+
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+
+    <section class="modal">
+        <div class="modal__container">
+            <img src="img/logo.png" class="modal__img">
+            <h2 class="modal__title">¡Bienvenido al sitio!</h2>
+            <p class="modal__paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nobis nisi
+                quibusdam doloremque expedita quae ipsam accusamus quisquam quas, culpa tempora. Veniam consectetur
+                deleniti maxime.</p>
+            <a href="#" class="modal__close">Cerrar Modal</a>
+        </div>
+    </section>
+
+    <script src="login.js"></script>
+</body>
+
+</html>

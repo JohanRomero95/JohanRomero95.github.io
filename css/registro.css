@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap");
+
+/* Estilos para centrar el contenido */
+body {
+     box-sizing: border-box;
+     display: flex;
+     justify-content: center; /* Centra horizontalmente */
+     align-items: center; /* Centra verticalmente */
+     height: 100vh; /* Establece la altura del cuerpo para ocupar toda la pantalla */
+     margin: 0; /* Elimina el margen predeterminado del cuerpo */
+     background-image: url("img/pokemon_wallpaper___poke_ball_theme_by_0trinima0_dd2zouo-pre.jpg");
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+     overflow-x: hidden;
+     font-family: "Poppins", sans-serif;
+}
+
+.navBar {
+     position: absolute;
+     top: 0;
+     margin-top: 3em;
+     padding: 3em;
+     width: 16em;
+     background-image: url(img/68747470733a2f2f692e696d6775722e636f6d2f415975745a4f462e706e67.png);
+     background-size: contain;
+     background-repeat: no-repeat;
+     /* width: 20em ;  Buenos tamaños para responsive */
+}
+
+.navBar img {
+     width: 100%;
+}
+
+/* Estilos para el formulario */
+#registroForm {
+     position: relative;
+     margin-top: 2em;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     width: 18em;
+     height: 30em;
+     opacity: 0.98;
+     text-align: center;
+     background-color: #ffffff;
+     padding: 1em;
+     border-radius: 20px;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+     -webkit-border-radius: 20px;
+     -moz-border-radius: 20px;
+     -ms-border-radius: 20px;
+     -o-border-radius: 20px;
+}
+
+#registroForm p {
+     font-weight: bold;
+     font-size: 2.5em;
+}
+
+#registroForm a {
+     font-size: 0.8em;
+     text-decoration: none;
+     color: rgba(0, 0, 0, 0.6);
+     font-weight: 600;
+     transition: all 1s;
+     -webkit-transition: all 1s;
+     -moz-transition: all 1s;
+     -ms-transition: all 1s;
+     -o-transition: all 1s;
+}
+
+/* Estilos para el botón Registrar */
+button[type="submit"] {
+     padding: 15px;
+     margin-left: 10px;
+     margin-right: 10px;
+     background-color: #fff836dc;
+     color: #fff;
+     border: 2px solid rgba(0, 0, 0, 0.5);
+     cursor: pointer;
+     font-weight: 800;
+     color: rgba(0, 0, 0, 0.9);
+     border-radius: 30px;
+     transition: 0.3s, 0.1s;
+     -webkit-transition: 0.3s, color 0.2s;
+     -moz-transition: 0.3s, 0.1s;
+     -ms-transition: 0.3s, 0.1s;
+     -o-transition: 0.3s, 0.1s;
+     -webkit-border-radius: 30px;
+     -moz-border-radius: 30px;
+     -ms-border-radius: 30px;
+     -o-border-radius: 30px;
+}
+
+.pokeball {
+     z-index: 10;
+     top: 26.4em;
+     right: 0.4em;
+     position: absolute;
+     width: 80px;
+     height: 80px;
+     background-image: url(img/Poké_Ball_icon.svg.png);
+     background-size: cover;
+     background-repeat: no-repeat;
+}
+
+button[type="submit"]:hover {
+     background-color: #ff0000;
+}
+span {
+     background-color: purple;
+}
+button[type="submit"]:hover {
+     transform: scale3d(1.1, 1.1, 0.2);
+     -webkit-transform: scale3d(1.1, 1.1, 0.2);
+     -moz-transform: scale3d(1.1, 1.1, 0.2);
+     -ms-transform: scale3d(1.1, 1.1, 0.2);
+     -o-transform: scale3d(1.1, 1.1, 0.2);
+}
+
+/* Estilos para los campos de entrada */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+     display: flex;
+     flex-direction: column;
+     width: 87%;
+     padding: 10px;
+     margin: 0px 0px 10px 8px;
+     border: none;
+     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+     outline: none;
+     font-size: 16px;
+}
+
+.modal {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: transparent;
+     display: flex;
+     opacity: 0;
+     pointer-events: none;
+}
+
+.modal--show {
+     opacity: 1;
+     pointer-events: unset;
+}
+
+.modal__container {
+     width: 90%;
+     background-color: #fff;
+     margin: auto;
+     max-width: 600px;
+     max-height: 90%;
+     border-radius: 6px;
+     padding: 3em 2.5em;
+     display: grid;
+     gap: 1em;
+     place-items: center;
+     grid-auto-columns: 100%;
+     -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+     -ms-border-radius: 6px;
+     -o-border-radius: 6px;
+}
+
+.modal__title {
+     font-size: 2.5em;
+}
+
+.modal__paragraph {
+     margin-bottom: 10px;
+}
+
+.modal__img {
+     width: 90%;
+     max-width: 300px;
+}
+
+.modal__close {
+     text-decoration: none;
+     color: #fff;
+     background-color: black;
+     padding: 1em 3em;
+     border: 1px solid;
+     border-radius: 6px;
+     font-weight: 300;
+     display: inline-block;
+     transition: background-color 0.3s;
+     -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+     -ms-border-radius: 6px;
+     -o-border-radius: 6px;
+     -webkit-transition: background-color 0.3s;
+     -moz-transition: background-color 0.3s;
+     -ms-transition: background-color 0.3s;
+     -o-transition: background-color 0.3s;
+}
+
+.modal__close:hover {
+     color: black;
+     background-color: white;
+}
+
+::-webkit-input-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder {
+     font-family: "Poppins", sans-serif;
+}
+
+input,
+textarea,
+input:focus,
+textarea:focus {
+     font-family: "Poppins", sans-serif;
+}

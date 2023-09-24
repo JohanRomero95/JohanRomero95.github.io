@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="css/registro.css">
+</head>
+
+<body>
+    <nav class="navBar">
+        <img src="" alt="">
+    </nav>
+
+    <main>
+        <section>
+            <form id="registroForm">
+                <p>Registrate</p>
+                <input type="text" id="nombre" required placeholder="Nombre de usuario">
+
+                <input type="email" id="correo" required placeholder="Correo Electronico">
+
+                <input type="password" id="contrasena" required placeholder="Contraseña">
+
+                <a href="login.html">Ya estas Registrado?</a>
+
+                <div class="pokeball"></div>
+
+                <button type="submit" id="registro">Registrar</button>
+            </form>
+        </section>
+    </main>
+
+    <section class="modal">
+        <!-- MODAL -->
+        <div class="modal__container">
+            <img src="css/img/pokedex.png" class="modal__img">
+            <h2 class="modal__title">¡Registro Exitoso!</h2>
+            <p class="modal__paragraph">¡Bienvenido al emocionante mundo de los Pokémon! 🌟
+
+                Estamos encantados de tenerte como parte de nuestra comunidad de entrenadores. Prepárate para embarcarte
+                en una emocionante aventura en la que capturarás, entrenarás y lucharás con tus Pokémon en busca de la
+                gloria.
+
+                <!-- Tu viaje comienza ahora, ¡así que elige a tu primer compañero Pokémon sabiamente y enfréntate a desafíos
+                que te esperan! No olvides explorar el mundo, conocer a otros entrenadores y desbloquear secretos
+                Pokémon.
+
+                Recuerda: "Atrápalos a todos" es el lema, ¡así que sal a la aventura y conviértete en el mejor
+                entrenador Pokémon que puedas ser! -->
+
+                ¡Buena suerte y que la diversión Pokémon te acompañe en cada paso de tu viaje! 🌟🔥🌿💧
+            </p>
+            <!-- BOTOS CERRAR MODAL -->
+            <a href="#" class="modal__close">Cerrar Modal</a>
+        </div>
+    </section>
+
+    <script src="registro.js"></script>
+</body>
+
+</html>
