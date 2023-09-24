@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap");
+
+:root {
+     --color-rojo: #ff0000;
+     --color-verde: #6fd30c;
+     --amarillo-pikachu: #fff836dc;
+     --color-blanco: #ffffff;
+     --color-negro: #000;
+}
 /* Estilos para centrar el contenido */
 body {
      box-sizing: border-box;
@@ -14,38 +23,160 @@ body {
      font-family: "Poppins", sans-serif;
 }
 
+/* Logo POKEDEX */
+.navBar {
+     position: absolute;
+     top: 0;
+     margin-top: 3em;
+     padding: 3em;
+     width: 16em;
+     background-image: url(img/68747470733a2f2f692e696d6775722e636f6d2f415975745a4f462e706e67.png);
+     background-size: contain;
+     background-repeat: no-repeat;
+     /* width: 20em ;  Buenos tamaños para responsive */
+}
+
+.navBar img {
+     width: 100%;
+}
+
 /* Estilos para el formulario */
 #loginForm {
-     text-align: center; /* Alinea el contenido del formulario al centro */
-     background-color: #ffffff; /* Cambia el color de fondo del formulario */
-     padding: 20px;
-     border-radius: 10px;
-     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Agrega una sombra al formulario */
+     position: relative;
+     margin-top: 2em;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     width: 18em;
+     height: 30em;
+     opacity: 0.98;
+     text-align: center;
+     background-color: var(--color-blanco);
+     padding: 1em;
+     border-radius: 20px;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+     -webkit-border-radius: 20px;
+     -moz-border-radius: 20px;
+     -ms-border-radius: 20px;
+     -o-border-radius: 20px;
+}
+
+#loginForm span {
+     font-size: 0.8em;
+}
+
+#loginForm p {
+     font-weight: bold;
+     font-size: 2.5em;
+     margin: 1.3em 0em -0.1em 0em;
+}
+
+#loginForm a {
+     font-size: 0.8em;
+     text-decoration: none;
+     color: rgba(0, 0, 0, 0.6);
+     font-weight: 600;
+     transition: all 1s;
+     -webkit-transition: all 1s;
+     -moz-transition: all 1s;
+     -ms-transition: all 1s;
+     -o-transition: all 1s;
+}
+
+/* Estilos para los campos de entrada */
+input[type="password"],
+input[type="email"] {
+     display: flex;
+     flex-direction: column;
+     width: 87%;
+     padding: 10px;
+     margin: 0px 0px -50px 8px;
+     border: none;
+     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+     outline: none;
+     font-size: 16px;
 }
 
 /* Estilos para el botón Iniciar Sesión */
 button[type="submit"] {
-     padding: 10px 20px;
-     background-color: #007bff; /* Cambia el color de fondo del botón según tus preferencias */
-     color: #fff; /* Cambia el color del texto del botón según tus preferencias */
-     border: none;
+     padding: 13px;
+     margin-bottom: 0.6em;
+     margin-left: 10px;
+     margin-right: 0.5em;
+     background-color: var(--amarillo-pikachu);
+     color: var(--color-blanco);
+     border: 2px solid rgba(0, 0, 0, 0.5);
      cursor: pointer;
-     border-radius: 5px;
+     font-weight: 800;
+     color: rgba(0, 0, 0, 0.9);
+     border-radius: 30px;
+     transition: 0.3s, 0.1s;
+     -webkit-transition: 0.3s, color 0.2s;
+     -moz-transition: 0.3s, 0.1s;
+     -ms-transition: 0.3s, 0.1s;
+     -o-transition: 0.3s, 0.1s;
+     -webkit-border-radius: 30px;
+     -moz-border-radius: 30px;
+     -ms-border-radius: 30px;
+     -o-border-radius: 30px;
 }
 
-/* Estilos para los campos de entrada */
-input[type="text"],
-input[type="password"] {
-     width: 100%;
-     padding: 10px;
-     margin: 5px 0;
-     border: 1px solid #ccc;
-     border-radius: 5px;
-     font-size: 16px;
+button[type="submit"]:hover {
+     background-color: var(--color-rojo);
+     transform: scale3d(1.1, 1.1, 0.2);
+     -webkit-transform: scale3d(1.1, 1.1, 0.2);
+     -moz-transform: scale3d(1.1, 1.1, 0.2);
+     -ms-transform: scale3d(1.1, 1.1, 0.2);
+     -o-transform: scale3d(1.1, 1.1, 0.2);
 }
 
-/* Estilos para el mensaje de error */
-#mensaje {
-     color: red; /* Cambia el color del mensaje de error según tus preferencias */
-     font-weight: bold;
+.pokeball {
+     z-index: 10;
+     top: 26.4em;
+     right: 0.3em;
+     position: absolute;
+     width: 5em;
+     height: 5em;
+     background-image: url(img/Poké_Ball_icon.svg.png);
+     background-size: cover;
+     pointer-events: none;
+     background-repeat: no-repeat;
+}
+
+/* FONT INPUT */
+::-webkit-input-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder,
+::-moz-placeholder {
+     font-family: "Poppins", sans-serif;
+}
+
+input,
+textarea,
+input:focus,
+textarea:focus {
+     font-family: "Poppins", sans-serif;
+}
+
+/* Estilo por defecto del input */
+input {
+     border-bottom: 2px solid #000; /* Borde inferior negro */
+}
+
+/* Estilo para el input válido */
+input:valid {
+     border-bottom: 2px solid var(--color-verde); /* Borde inferior verde */
+}
+
+/* Estilo para el input inválido */
+input:invalid {
+     border-bottom: 2px solid var(--color-rojo); /* Borde inferior rojo */
+}
+
+.error-message {
+     display: none; /* Oculta el mensaje de error por defecto */
+}
+input:invalid + .error-message {
+     display: block; /* Muestra el mensaje de error cuando el input es inválido */
+     color: var(--color-rojo); /* Color del mensaje de error */
 }

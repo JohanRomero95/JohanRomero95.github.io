@@ -40,7 +40,8 @@ body {
 }
 
 /* Estilos para el formulario */
-#registroForm {
+#registroForm,
+#loginForm {
      position: relative;
      margin-top: 2em;
      display: flex;
@@ -60,18 +61,20 @@ body {
      -o-border-radius: 20px;
 }
 
-#registroForm span {
+#registroForm span,
+#loginForm span {
      font-size: 0.8em;
-     /* margin-bottom: 1.8em; */
 }
 
-#registroForm p {
+#registroForm p,
+#loginForm p {
      font-weight: bold;
      font-size: 2.5em;
      margin: 10px;
 }
 
-#registroForm a {
+#registroForm a,
+#loginForm a {
      font-size: 0.8em;
      text-decoration: none;
      color: rgba(0, 0, 0, 0.6);
@@ -109,9 +112,6 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
      background-color: var(--color-rojo);
-}
-
-button[type="submit"]:hover {
      transform: scale3d(1.1, 1.1, 0.2);
      -webkit-transform: scale3d(1.1, 1.1, 0.2);
      -moz-transform: scale3d(1.1, 1.1, 0.2);
@@ -127,7 +127,7 @@ input[type="email"] {
      flex-direction: column;
      width: 87%;
      padding: 10px;
-     margin: 0px 0px -17px 8px;
+     margin: 0px 0px -16px 8px;
      border: none;
      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
      outline: none;
@@ -154,7 +154,9 @@ input[type="email"] {
      left: 0;
      right: 0;
      bottom: 0;
-     background-color: transparent;
+     background: rgba(0, 0, 0, 0.5);
+     backdrop-filter: blur(10px); /* Aplicar un desenfoque de 5px al fondo */
+     z-index: 1000;
      display: flex;
      opacity: 0;
      pointer-events: none;
@@ -166,25 +168,31 @@ input[type="email"] {
 }
 
 .modal__container {
-     width: 90%;
+     width: 64%;
      background-color: var(--color-blanco);
      margin: auto;
      max-width: 600px;
      max-height: 90%;
-     border-radius: 6px;
+     border-radius: 20px;
      padding: 3em 2.5em;
      display: grid;
      gap: 1em;
      place-items: center;
      grid-auto-columns: 100%;
-     -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-     -ms-border-radius: 6px;
-     -o-border-radius: 6px;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+
+     -webkit-border-radius: 20px;
+     -moz-border-radius: 20px;
+     -ms-border-radius: 20px;
+     -o-border-radius: 20px;
+}
+
+.modal__container p {
+     font-size: 0.9em;
 }
 
 .modal__title {
-     font-size: 2.5em;
+     font-size: 2em;
 }
 
 .modal__paragraph {

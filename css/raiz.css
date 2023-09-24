@@ -1,0 +1,32 @@
+/*
+
+
+NO ESTA INCORPORADA AUN
+
+
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap");
+
+:root {
+     --color-rojo: #ff0000;
+     --color-verde: #6fd30c;
+     --amarillo-pikachu: #fff836dc;
+     --color-blanco: #ffffff;
+     --color-negro: #000;
+}
+
+body {
+     box-sizing: border-box;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh; /* Establece la altura del cuerpo para ocupar toda la pantalla */
+     margin: 0; /* Elimina el margen predeterminado del cuerpo */
+     background-image: url("img/pokemon_wallpaper___poke_ball_theme_by_0trinima0_dd2zouo-pre.jpg");
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-position: center;
+     overflow-x: hidden;
+     font-family: "Poppins", sans-serif;
+}

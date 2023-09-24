@@ -9,24 +9,36 @@
 </head>
 
 <body>
-    <h1>Iniciar Sesión</h1>
-    <form id="loginForm">
-        <input type="email" id="correoLogin" required placeholder="Correo Electronico"
-            pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
-        <!-- <span id="formError" class="error-message">Ingresa un correo electronico registrado.</span> -->
+    <nav class="navBar">
+        <img src="" alt="">
+    </nav>
+    <main>
+        <section>
+            <form id="loginForm">
+                <p>Iniciar Sesión</p>
+                <input type="email" id="correoLogin" required placeholder="Correo Electronico"
+                    pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+                <span id="formError" class="error-message">Por favor, inserte un correo electronico.</span>
 
-        <input type="password" id="contrasenaLogin" required placeholder="Contraseña">
+                <input type="password" id="contrasenaLogin" required placeholder="Contraseña">
+                <span id="formError" class="error-message">Por favor, inserte clave.</span>
 
-        <button type="submit">Iniciar Sesión</button>
-    </form>
+                <div class="pokeball"></div>
+
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </section>
+    </main>
 
     <!-- <section class="modal">
         <div class="modal__container">
             <img src="img/logo.png" class="modal__img">
             <h2 class="modal__title">¡Bienvenido al sitio!</h2>
-            <p class="modal__paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti nobis nisi
-                quibusdam doloremque expedita quae ipsam accusamus quisquam quas, culpa tempora. Veniam consectetur
-                deleniti maxime.</p>
+            <p class="modal__paragraph">Tu viaje comienza ahora, ¡así que elige a tu primer compañero Pokémon sabiamente y enfréntate a desafíos
+                que te esperan! No olvides explorar el mundo, conocer a otros entrenadores y desbloquear secretos
+                Pokémon.
+            
+             ¡Buena suerte y que la diversión Pokémon te acompañe en cada paso de tu viaje! 🌟🔥🌿💧</p>
             <a href="#" class="modal__close">Cerrar Modal</a>
         </div>
     </section> -->

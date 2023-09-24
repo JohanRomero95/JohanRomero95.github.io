@@ -1,5 +1,7 @@
 // Expresiones regulares para validar el formulario de inicio de sesión
 const correoRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+const openModal = document.getElementById("registro");
+const modal1 = document.querySelector(".modal");
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
      e.preventDefault();

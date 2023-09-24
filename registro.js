@@ -5,6 +5,7 @@ const contrasenaRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
 const openModal = document.getElementById("registro");
 const modal1 = document.querySelector(".modal");
+const modalBackground = document.querySelector(".modal-background");
 
 document
      .getElementById("registroForm")
@@ -45,11 +46,13 @@ document
           const modal = openModal.addEventListener("click", (e) => {
                e.preventDefault();
                modal1.classList.add("modal--show");
-               // Agrega un setTimeout para retrasar la redirección en 2 segundos (2000 milisegundos)
+
+               // Agrega un setTimeout para retrasar la redirección en 10 segundos
                setTimeout(() => {
                     window.location.href = "login.html";
-               }, 4000);
+               }, 10000);
           });
+          // Agregar un evento de clic al fondo del modal
 
           modal();
 
@@ -58,3 +61,11 @@ document
 
           window.location.href = "login.html";
      });
+
+// modalBackground.addEventListener("click", (event) => {
+//      // Verificar si el clic se realizó fuera del contenido del modal
+//      if (event.target === modalBackground) {
+//           // Cerrar el modal
+//           modal.style.display = "none"; // O utiliza alguna otra forma de ocultar el modal
+//      }
+// });
