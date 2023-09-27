@@ -209,6 +209,7 @@ button[type="submit"]:hover {
      background-color: var(--color-negro);
      padding: 1em 3em;
      border: 1px solid;
+     cursor: pointer;
      border-radius: 6px;
      font-weight: 300;
      display: inline-block;

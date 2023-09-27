@@ -1,7 +1,8 @@
 // Expresiones regulares para validar el formulario de inicio de sesión
 const correoRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-const openModal = document.getElementById("registro");
-const modal1 = document.querySelector(".modal");
+const registro = document.getElementById("registro");
+const modal = document.querySelector(".modal");
+const botonCerrarModal = document.querySelector(".modal__close");
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
      e.preventDefault();
@@ -30,7 +31,15 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
           return;
      }
 
-     alert("Inicio de sesión exitoso");
+     modal.classList.add("modal--show");
 
+     setTimeout(() => {
+          window.location.href = "inicio.html";
+     }, 15000);
+});
+
+// Evento boton cerrar
+botonCerrarModal.addEventListener("click", (e) => {
+     e.preventDefault();
      window.location.href = "inicio.html";
 });

@@ -46,14 +46,42 @@ registro.addEventListener("click", function (e) {
           return;
      }
 
-     // Almacenar los datos en el almacenamiento local
-     const usuario = {
-          nombre,
-          correo,
-          contrasena,
-     };
-     localStorage.setItem("usuario", JSON.stringify(usuario));
+     // Variables
+     const usuarios = {}; // Objeto para almacenar usuarios
+     const nuevoIdentificador = registrarUsuario(
+          `${nombre}, ${correo}, ${contrasena}`
+     );
+
+     // Función para generar un identificador único
+     function generarIdentificadorUnico() {
+          return Math.random().toString(36).substring(2);
+     }
+
+     // Función para registrar un nuevo usuario
+     function registrarUsuario(nombre, correo, contrasena) {
+          const identificadorUsuario = generarIdentificadorUnico();
+          const nuevoUsuario = {
+               nombre,
+               correo,
+               contrasena,
+               // Otros datos del usuario
+          };
+
+          // Almacena los datos en el objeto de usuarios
+          usuarios[identificadorUsuario] = nuevoUsuario;
+
+          // Almacena los datos en localStorage
+          localStorage.setItem(
+               `usuario_${identificadorUsuario}`,
+               JSON.stringify(nuevoUsuario)
+          );
+          return identificadorUsuario;
+     }
+
+     // Ejemplo de registro de un nuevo usuario
 
      // Mostrar el modal una vez que se han validado los datos y se ha guardado en localStorage
      mostrarModal();
 });
+
+// TODO ESTE CODIGO SIRVE
