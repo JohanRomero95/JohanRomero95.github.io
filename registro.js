@@ -3,7 +3,7 @@ const nombreRegex = /^[a-zA-Z ]{2,30}$/;
 const correoRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const contrasenaRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
-const registro = document.getElementById("registro");
+const registro = document.querySelector("#registroForm");
 const modal = document.querySelector(".modal");
 const botonCerrarModal = document.querySelector(".modal__close");
 
@@ -19,12 +19,11 @@ function mostrarModal() {
 // Funcion cerrar modal
 botonCerrarModal.addEventListener("click", (e) => {
      e.preventDefault();
-     //  modal.classList.remove("modal--show");
      window.location.href = "login.html";
 });
 
-// Agregar un evento de clic al botón de registro
-registro.addEventListener("click", function (e) {
+// Agregar un evento de click al botón de registro
+registro.addEventListener("submit", (e) => {
      e.preventDefault();
 
      // Obtener valores de los campos del formulario
@@ -32,28 +31,13 @@ registro.addEventListener("click", function (e) {
      const correo = document.getElementById("correo").value;
      const contrasena = document.getElementById("contrasena").value;
 
-     // Validar los campos utilizando expresiones regulares
-     if (!nombreRegex.test(nombre)) {
-          return;
+     // Guardando en base de datos local
+     const Users = JSON.parse(localStorage.getItem("usuario")) || [];
+     const isUsersRegistered = Users.find((user) => user.correo === correo);
+     if (isUsersRegistered) {
+          return alert("El usuario esta registrado");
      }
-
-     if (!correoRegex.test(correo)) {
-          return;
-     }
-
-     if (!contrasenaRegex.test(contrasena)) {
-          // alert("La contraseña debe tener al menos 6 caracteres, una mayúscula, una minúscula y un número.");
-          return;
-     }
-
-     // Almacenar los datos en el almacenamiento local
-     const usuario = {
-          nombre,
-          correo,
-          contrasena,
-     };
-     localStorage.setItem("usuario", JSON.stringify(usuario));
-
-     // Mostrar el modal una vez que se han validado los datos y se ha guardado en localStorage
+     Users.push({ nombre: nombre, correo: correo, contrasena: contrasena });
+     localStorage.setItem("usuario", JSON.stringify(Users));
      mostrarModal();
 });

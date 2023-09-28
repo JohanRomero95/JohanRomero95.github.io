@@ -1,35 +1,22 @@
 // Expresiones regulares para validar el formulario de inicio de sesión
 const correoRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-const registro = document.getElementById("registro");
+const registro = document.getElementById("loginForm");
 const modal = document.querySelector(".modal");
 const botonCerrarModal = document.querySelector(".modal__close");
 
-document.getElementById("loginForm").addEventListener("submit", function (e) {
+loginForm.addEventListener("submit", (e) => {
      e.preventDefault();
 
      const correo = document.getElementById("correoLogin").value;
      const contrasena = document.getElementById("contrasenaLogin").value;
-
-     // Valida los campos usando expresiones regulares
-     if (!correoRegex.test(correo)) {
-          alert("Correo electrónico no válido");
-          return;
+     const Users = JSON.parse(localStorage.getItem("usuario")) || [];
+     const validUser = Users.find(
+          (user) => user.correo === correo && user.contrasena === contrasena
+     );
+     if (!validUser) {
+          return alert("Correo y/o contraseña incorrecto");
      }
-
-     // Obtener los datos del almacenamiento local
-     const usuarioRegistrado = JSON.parse(localStorage.getItem("usuario"));
-
-     if (!usuarioRegistrado) {
-          alert(
-               "No se encontró ningún usuario registrado con ese correo electrónico."
-          );
-          return;
-     }
-
-     if (contrasena !== usuarioRegistrado.contrasena) {
-          alert("La contraseña es incorrecta");
-          return;
-     }
+     alert(`Bienvenido ${validUser.nombre}`);
 
      modal.classList.add("modal--show");
 
