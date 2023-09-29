@@ -50,7 +50,18 @@ body {
 
 header {
      padding-block: 1rem;
+     display: flex;
+     flex-direction: column;
      box-shadow: 0 0 2rem -1rem rgba(0, 0, 0, 0.5);
+     position: relative;
+}
+
+.navImg {
+     background-image: url(img/68747470733a2f2f692e696d6775722e636f6d2f415975745a4f462e706e67.png);
+     background-repeat: no-repeat;
+     background-size: contain;
+     width: 100vh;
+     height: 100px;
 }
 
 .nav {
@@ -59,7 +70,7 @@ header {
      gap: 1rem;
      align-items: flex-start;
      padding-inline: 2rem;
-     max-width: 1000px;
+     max-width: 90%;
      margin: 0 auto;
 }
 

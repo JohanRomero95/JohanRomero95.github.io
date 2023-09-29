@@ -36,6 +36,7 @@ registro.addEventListener("submit", (e) => {
      const Users = JSON.parse(localStorage.getItem("usuario")) || [];
      const isUsersRegistered = Users.find((user) => user.correo === correo);
      if (isUsersRegistered) {
+          const toast = document.querySelector(".toast");
           toast.textContent = "Usuario registrado, intenta con otro correo";
           toast.classList.add("toast--show");
           setTimeout(() => {

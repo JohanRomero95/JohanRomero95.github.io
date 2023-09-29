@@ -4,7 +4,6 @@ const registro = document.getElementById("loginForm");
 const modal = document.querySelector(".modal");
 const botonCerrarModal = document.querySelector(".modal__close");
 const modalNombreCliente = document.querySelector(".modal__title");
-const toast = document.querySelector(".toast");
 
 loginForm.addEventListener("submit", (e) => {
      e.preventDefault();
@@ -16,6 +15,7 @@ loginForm.addEventListener("submit", (e) => {
           (user) => user.correo === correo && user.contrasena === contrasena
      );
      if (!validUser) {
+          const toast = document.querySelector(".toast");
           toast.textContent = "Correo y/o contraseña incorrecto";
           toast.classList.add("toast--show");
           setTimeout(() => {
