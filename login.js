@@ -3,6 +3,8 @@ const correoRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 const registro = document.getElementById("loginForm");
 const modal = document.querySelector(".modal");
 const botonCerrarModal = document.querySelector(".modal__close");
+const modalNombreCliente = document.querySelector(".modal__title");
+const toast = document.querySelector(".toast");
 
 loginForm.addEventListener("submit", (e) => {
      e.preventDefault();
@@ -14,18 +16,22 @@ loginForm.addEventListener("submit", (e) => {
           (user) => user.correo === correo && user.contrasena === contrasena
      );
      if (!validUser) {
-          return alert("Correo y/o contraseña incorrecto");
+          toast.textContent = "Correo y/o contraseña incorrecto";
+          toast.classList.add("toast--show");
+          setTimeout(() => {
+               toast.classList.remove("toast--show");
+          }, 2000);
+          return;
      }
-     alert(`Bienvenido ${validUser.nombre}`);
 
+     modalNombreCliente.textContent = `Bienvenido ${validUser.nombre} al mundo Pokemon`;
      modal.classList.add("modal--show");
-
      setTimeout(() => {
           window.location.href = "inicio.html";
      }, 15000);
 });
 
-// Evento boton cerrar
+// Evento boton cerrar modal
 botonCerrarModal.addEventListener("click", (e) => {
      e.preventDefault();
      window.location.href = "inicio.html";

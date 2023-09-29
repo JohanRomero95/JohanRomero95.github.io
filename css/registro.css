@@ -231,6 +231,34 @@ input[type="email"] {
      background-color: var(--color-blanco);
 }
 
+.toast {
+     position: fixed;
+     top: 15.5%;
+     left: 50%;
+     transform: translateX(-50%);
+     background-color: var(--color-negro);
+     min-width: 17.5em;
+     text-align: center;
+     color: var(--color-blanco);
+     padding: 11px 20px;
+     border-radius: 30px;
+     opacity: 0;
+     transition: opacity 0.5s;
+     z-index: 1000;
+     -webkit-transition: opacity 0.5s;
+     -moz-transition: opacity 0.5s;
+     -ms-transition: opacity 0.5s;
+     -o-transition: opacity 0.5s;
+     -webkit-border-radius: 30px;
+     -moz-border-radius: 30px;
+     -ms-border-radius: 30px;
+     -o-border-radius: 30px;
+}
+
+.toast--show {
+     opacity: 1;
+}
+
 /* FONT INPUT */
 ::-webkit-input-placeholder,
 :-ms-input-placeholder,

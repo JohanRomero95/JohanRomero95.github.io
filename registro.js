@@ -6,6 +6,7 @@ const contrasenaRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 const registro = document.querySelector("#registroForm");
 const modal = document.querySelector(".modal");
 const botonCerrarModal = document.querySelector(".modal__close");
+const toast = document.querySelector(".toast");
 
 // Función para mostrar el modal
 function mostrarModal() {
@@ -35,7 +36,12 @@ registro.addEventListener("submit", (e) => {
      const Users = JSON.parse(localStorage.getItem("usuario")) || [];
      const isUsersRegistered = Users.find((user) => user.correo === correo);
      if (isUsersRegistered) {
-          return alert("El usuario esta registrado");
+          toast.textContent = "Usuario registrado, intenta con otro correo";
+          toast.classList.add("toast--show");
+          setTimeout(() => {
+               toast.classList.remove("toast--show");
+          }, 4000);
+          return;
      }
      Users.push({ nombre: nombre, correo: correo, contrasena: contrasena });
      localStorage.setItem("usuario", JSON.stringify(Users));
