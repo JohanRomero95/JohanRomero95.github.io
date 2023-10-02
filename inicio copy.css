@@ -42,7 +42,7 @@ body {
      box-sizing: border-box;
      height: 100vh; /* Establece la altura del cuerpo para ocupar toda la pantalla */
      margin: 0; /* Elimina el margen predeterminado del cuerpo */
-     background-image: url("img/pokemon_wallpaper___poke_ball_theme_by_0trinima0_dd2zouo-pre.jpg");
+     background-image: url("css/img/pokemon_wallpaper___poke_ball_theme_by_0trinima0_dd2zouo-pre.jpg");
      background-repeat: no-repeat;
      background-size: cover;
      background-position: center;
@@ -55,7 +55,7 @@ body {
      padding-top: 3em;
      padding-bottom: 2em;
      width: 22em;
-     background-image: url(img/68747470733a2f2f692e696d6775722e636f6d2f415975745a4f462e706e67.png);
+     background-image: url(css/img/68747470733a2f2f692e696d6775722e636f6d2f415975745a4f462e706e67.png);
      background-size: contain;
      background-repeat: no-repeat;
      /* width: 20em ;  Buenos tamaños para responsive */
@@ -325,6 +325,13 @@ main {
      color: var(--clr-black);
 }
 
+footer {
+     display: flex;
+     /* height: 77vh; */
+     justify-content: center;
+}
+
+/* POKEDEX */
 HTML CSS JSResult Skip Results Iframe .pokedex {
      left: 100px;
      position: relative;
@@ -347,12 +354,13 @@ HTML CSS JSResult Skip Results Iframe .pokedex {
      margin: 0;
      /* display: block; */
      position: absolute;
-     left: -5px;
-     width: 245px;
+     left: -6px;
+     width: 100%;
      height: 100%;
      backface-visibility: hidden;
      -webkit-backface-visibility: hidden;
 }
+
 .pokedex-flap > .pokedex-flap-front {
      transform: rotateX(180deg);
 }
@@ -367,7 +375,7 @@ HTML CSS JSResult Skip Results Iframe .pokedex {
 }
 .pokedex-flap-front {
      border-bottom-right-radius: 25px;
-     border-bottom-left-radius: 25px;
+     /* border-bottom-left-radius: 25px; */
 }
 .pokedex-flap-back:before {
      content: " ";
@@ -388,8 +396,8 @@ HTML CSS JSResult Skip Results Iframe .pokedex {
 .pokedex > .pokedex-top-part {
      position: relative;
      perspective: 800px;
-     width: 230px;
-     height: 150px;
+     width: 400px;
+     height: 147px;
      margin-left: 70px;
      position: relative;
      z-index: 11;
@@ -419,7 +427,7 @@ HTML CSS JSResult Skip Results Iframe .pokedex {
      width: 100px;
      height: 100px;
      position: absolute;
-     margin-left: 300px;
+     margin-left: 305px;
      z-index: 1;
      margin-top: -130px;
      border: 2px solid #000;
@@ -536,6 +544,12 @@ HTML CSS JSResult Skip Results Iframe .pokedex {
 }
 .pokedex.closed .pokedex-joystick {
      left: -100px;
+}
+
+.pokedex-padre {
+     position: relative;
+     /* width: 100%;
+     height: 77vh; */
 }
 #btn {
      position: fixed;
