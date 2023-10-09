@@ -165,13 +165,13 @@ main {
 
 .pokemon-id-back {
      position: absolute;
-     top: 2.5rem;
-     left: 50%;
+     top: 1.3em;
+     left: 74%;
      transform: translateX(-50%);
-     font-size: 6rem;
+     font-size: 4rem;
      font-weight: 800;
      z-index: -1;
-     color: var(--clr-gray);
+     color: var(--type-steel);
 }
 
 .info-pokemon {
