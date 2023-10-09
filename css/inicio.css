@@ -151,7 +151,7 @@ main {
      border-radius: 0.4rem;
      height: 215px;
      background-color: var(--clr-white);
-     box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.25);
+     /* box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, 0.25); */
      text-transform: uppercase;
      position: relative;
      isolation: isolate;
@@ -165,7 +165,7 @@ main {
 
 .pokemon-id-back {
      position: absolute;
-     top: 1rem;
+     top: 2.5rem;
      left: 50%;
      transform: translateX(-50%);
      font-size: 6rem;
@@ -176,29 +176,64 @@ main {
 
 .info-pokemon {
      display: flex;
+     justify-content: center;
 }
 
 .pokemon-imagen {
-     padding-inline: 1em;
+     width: 182px;
      display: flex;
+     padding-block: 0.3em;
      flex-direction: column;
-     justify-content: center;
-     background-color: purple;
+     align-items: center;
+     background-color: var(--clr-black);
+     border-radius: 0.4em;
+     -webkit-border-radius: 0.4em;
+     -moz-border-radius: 0.4em;
+     -ms-border-radius: 0.4em;
+     -o-border-radius: 0.4em;
 }
 
 .pokemon-imagen img {
      width: 100%;
-     max-width: 6rem;
+     position: relative;
+     bottom: 6px;
+     max-width: 9rem;
 }
 
 .pokemon-info {
+     width: 181px;
      display: flex;
      padding-inline: 1em;
-     background-color: green;
+     /* background-color: green; */
      flex-direction: column;
      gap: 0.5rem;
      align-items: center;
      text-align: center;
+     justify-content: space-between;
+}
+
+.stats-pokemon {
+     /* background-color: beige; */
+     padding-block: 0.5em;
+     height: 170px;
+     display: flex;
+     font-size: 0.42em;
+     font-weight: bold;
+     gap: 0.6em;
+     width: 181px;
+}
+
+.progress-bar {
+     height: 100%;
+     width: 13px;
+     background-color: red;
+}
+
+.stat-group {
+     width: 26px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
 }
 
 .nombre-contenedor {
@@ -212,12 +247,16 @@ main {
 .pokemon-id {
      background-color: var(--clr-gray);
      padding: 0.25rem 0.5rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
      border-radius: 100vmax;
      font-size: 0.75rem;
      font-weight: 500;
 }
 
 .pokemon-nombre {
+     color: var(--clr-white);
      font-size: 1.4rem;
 }
 
