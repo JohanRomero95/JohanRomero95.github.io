@@ -148,6 +148,25 @@ input[type="email"] {
 }
 
 /* ESTILOS DEL MODAL */
+.modal__container {
+     width: 64%;
+     background-color: var(--color-blanco);
+     margin: auto;
+     max-width: 600px;
+     max-height: 90%;
+     border-radius: 20px;
+     padding: 3em 2.5em;
+     display: grid;
+     gap: 1em;
+     place-items: center;
+     grid-auto-columns: 100%;
+     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+     -webkit-border-radius: 20px;
+     -moz-border-radius: 20px;
+     -ms-border-radius: 20px;
+     -o-border-radius: 20px;
+}
+
 .modal {
      position: fixed;
      top: 0;
@@ -165,26 +184,6 @@ input[type="email"] {
 .modal--show {
      opacity: 1;
      pointer-events: unset;
-}
-
-.modal__container {
-     width: 64%;
-     background-color: var(--color-blanco);
-     margin: auto;
-     max-width: 600px;
-     max-height: 90%;
-     border-radius: 20px;
-     padding: 3em 2.5em;
-     display: grid;
-     gap: 1em;
-     place-items: center;
-     grid-auto-columns: 100%;
-     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-
-     -webkit-border-radius: 20px;
-     -moz-border-radius: 20px;
-     -ms-border-radius: 20px;
-     -o-border-radius: 20px;
 }
 
 .modal__container p {
