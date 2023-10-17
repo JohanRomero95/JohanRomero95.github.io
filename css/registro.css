@@ -148,6 +148,20 @@ input[type="email"] {
 }
 
 /* ESTILOS DEL MODAL */
+.modal {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background: rgba(0, 0, 0, 0.5);
+     backdrop-filter: blur(10px); /* Aplicar un desenfoque de 5px al fondo */
+     z-index: 1000;
+     display: flex;
+     opacity: 0;
+     pointer-events: none;
+}
+
 .modal__container {
      width: 64%;
      background-color: var(--color-blanco);
@@ -165,20 +179,6 @@ input[type="email"] {
      -moz-border-radius: 20px;
      -ms-border-radius: 20px;
      -o-border-radius: 20px;
-}
-
-.modal {
-     position: fixed;
-     top: 0;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     background: rgba(0, 0, 0, 0.5);
-     backdrop-filter: blur(10px); /* Aplicar un desenfoque de 5px al fondo */
-     z-index: 1000;
-     display: flex;
-     opacity: 0;
-     pointer-events: none;
 }
 
 .modal--show {

@@ -164,33 +164,51 @@ main {
      background-color: var(--clr-white);
      text-transform: uppercase;
      position: relative;
+     top: 0;
      isolation: isolate;
      display: flex;
-     opacity: 1;
      /* overflow: hidden; */
+     z-index: 1000;
+     /* opacity: 1; */
      -webkit-border-radius: 0.4rem;
      -moz-border-radius: 0.4rem;
      -ms-border-radius: 0.4rem;
      -o-border-radius: 0.4rem;
 }
 
+/* SIRVE PARA MOSTRAR EL SUBMIT DEL POKEMON */
+.pokemon--show {
+     opacity: 0;
+}
+
 .pantalla-negra {
-     position: absolute;
      border-radius: 0.4rem;
-     width: 100%;
-     height: 100%;
+     width: 342px;
+     height: 216px;
      background-color: var(--clr-black);
      color: var(--amarillo-pikachu);
-     /* position: relative; */
      display: flex;
      align-items: center;
      justify-content: center;
+     font-size: 29px;
      opacity: 1;
      -webkit-border-radius: 0.4rem;
      -moz-border-radius: 0.4rem;
      -ms-border-radius: 0.4rem;
      -o-border-radius: 0.4rem;
 }
+
+/* ME SIRVE QUE CUANDO HAGA EL SUBMIT ESTO OCULTE PANTALLA NEGRA */
+.pantalla-negra--show {
+     opacity: 0;
+}
+
+/* PARA QUITAR TODA LA PANTALLA TOP */
+/* .inicio {
+     position: relative;
+     opacity: 1;
+} */
+
 .pokemon3 {
      border-radius: 0.4rem;
      width: 100%;
@@ -676,7 +694,7 @@ main {
      border-radius: 50%;
      margin-top: 6px;
      margin-left: 7px;
-     cursor: pointer;
+     pointer-events: none;
 }
 .pokedex-joystick-tracker:after {
      height: 13px;
@@ -694,6 +712,11 @@ main {
      border-radius: 50%;
      margin-top: 18px;
      margin-left: 19px;
+     cursor: pointer;
+}
+
+.pokedex-joystick-button:hover {
+     background-color: #3deb3d;
 }
 .pokedex-top-screen,
 .pokedex-bottom-screen {
@@ -711,7 +734,7 @@ main {
      top: 14px;
 }
 .pokedex-top-screen {
-     margin-left: 24px;
+     margin-left: 23px;
 }
 
 .pokedex-pad-background {
@@ -866,17 +889,30 @@ main {
      }
 }
 
-#lampButton {
-     background-color: red; /* Color inicial (apagado) */
-     color: white;
-     padding: 10px 20px;
-     border: none;
-     cursor: pointer;
-     font-size: 16px;
-     transition: background-color 0.3s, filter 0.3s;
+/* .shutdown-on {
+     animation: shutdown 3s linear;
+     -webkit-animation: shutdown 3s linear;
+} */
+
+.shutdown {
+     animation: shutdown 2.5s ease-out forwards;
+     -webkit-animation: shutdown 2.5s ease-out forwards;
 }
 
-#lampButton.on {
-     background-color: green; /* Color cuando está encendido */
-     filter: brightness(0.4); /* Atenuación */
+@keyframes shutdown {
+     0% {
+          transform: scale(0, 0);
+          opacity: 0.3;
+     }
+     50% {
+          transform: scale(1, 0.02);
+          opacity: 0.8;
+     }
+     54%,
+     92% {
+          transform: scale(1, 1);
+          opacity: 1;
+     }
+     100% {
+     }
 }

@@ -33,31 +33,43 @@ input.addEventListener("blur", () => {
      input.style.animation = "parpadeo 1s infinite"; // Reanuda la animación cuando salen del input
 });
 
-// Letra 1 x 1
-boton.addEventListener("click", () => {
-     const contenido = "Bienvenido";
-     const textElement = document.getElementById("text");
-
-     setText = (indice) => {
-          textElement.textContent = contenido.slice(0, indice);
-     };
-
-     let i = 0;
-
-     animateText = () => {
-          if (i <= contenido.length) {
-               setText(i);
-               i++;
-               setTimeout(animateText, 235);
-          }
-     };
-     animateText();
-});
-
 const pokedexBackground = document.querySelector(".pokedex-pad-background");
 let encendido = false;
 
 boton.addEventListener("click", function () {
      encendido = !encendido;
      pokedexBackground.classList.toggle("on", encendido);
+});
+
+const element = document.querySelector(".pantalla-negra");
+let isOn = true;
+
+boton.addEventListener("click", () => {
+     if (isOn) {
+          element.classList.add("shutdown");
+          const pantalla = document.querySelector(".pantalla-negra");
+          const contenido = (pantalla.innerHTMLtextContent = "Bienvenido");
+
+          // Letra 1 x 1
+
+          let i = 0;
+
+          agregarLetra = (i) => {
+               pantalla.textContent = contenido.slice(0, i);
+          };
+
+          setTimeout(() => {
+               animateText = () => {
+                    if (i <= contenido.length) {
+                         agregarLetra(i);
+                         i++;
+                         setTimeout(animateText, 235);
+                    }
+               };
+               animateText();
+          }, 1200);
+     } else {
+          element.classList.remove("shutdown");
+     }
+     isOn = !isOn; // Alternar el estado
 });
