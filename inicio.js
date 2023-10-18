@@ -44,6 +44,7 @@ boton.addEventListener("click", function () {
 const element = document.querySelector(".pantalla-negra");
 let isOn = true;
 
+// Cuando abre hace animacion de encendido + agrega letra x letra
 boton.addEventListener("click", () => {
      if (isOn) {
           element.classList.add("shutdown");

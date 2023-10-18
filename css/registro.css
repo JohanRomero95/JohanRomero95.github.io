@@ -56,9 +56,6 @@ body {
      border-radius: 20px;
      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
      -webkit-border-radius: 20px;
-     -moz-border-radius: 20px;
-     -ms-border-radius: 20px;
-     -o-border-radius: 20px;
 }
 
 #registroForm span,
@@ -81,9 +78,6 @@ body {
      font-weight: 600;
      transition: all 1s;
      -webkit-transition: all 1s;
-     -moz-transition: all 1s;
-     -ms-transition: all 1s;
-     -o-transition: all 1s;
 }
 
 /* Estilos para el botón Registrar */
@@ -101,22 +95,13 @@ button[type="submit"] {
      border-radius: 30px;
      transition: 0.3s, 0.1s;
      -webkit-transition: 0.3s, color 0.2s;
-     -moz-transition: 0.3s, 0.1s;
-     -ms-transition: 0.3s, 0.1s;
-     -o-transition: 0.3s, 0.1s;
      -webkit-border-radius: 30px;
-     -moz-border-radius: 30px;
-     -ms-border-radius: 30px;
-     -o-border-radius: 30px;
 }
 
 button[type="submit"]:hover {
      background-color: var(--color-rojo);
-     transform: scale3d(1.1, 1.1, 0.2);
+     transform: scale(1.1);
      -webkit-transform: scale3d(1.1, 1.1, 0.2);
-     -moz-transform: scale3d(1.1, 1.1, 0.2);
-     -ms-transform: scale3d(1.1, 1.1, 0.2);
-     -o-transform: scale3d(1.1, 1.1, 0.2);
 }
 
 /* Estilos para los campos de entrada */
@@ -137,7 +122,7 @@ input[type="email"] {
 .pokeball {
      z-index: 10;
      top: 26.4em;
-     right: 0.3em;
+     right: 0.1em;
      position: absolute;
      width: 5em;
      height: 5em;
@@ -176,9 +161,6 @@ input[type="email"] {
      grid-auto-columns: 100%;
      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
      -webkit-border-radius: 20px;
-     -moz-border-radius: 20px;
-     -ms-border-radius: 20px;
-     -o-border-radius: 20px;
 }
 
 .modal--show {
@@ -216,13 +198,7 @@ input[type="email"] {
      display: inline-block;
      transition: background-color 0.3s;
      -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-     -ms-border-radius: 6px;
-     -o-border-radius: 6px;
      -webkit-transition: background-color 0.3s;
-     -moz-transition: background-color 0.3s;
-     -ms-transition: background-color 0.3s;
-     -o-transition: background-color 0.3s;
 }
 
 .modal__close:hover {
@@ -245,13 +221,7 @@ input[type="email"] {
      transition: opacity 0.5s;
      z-index: 1000;
      -webkit-transition: opacity 0.5s;
-     -moz-transition: opacity 0.5s;
-     -ms-transition: opacity 0.5s;
-     -o-transition: opacity 0.5s;
      -webkit-border-radius: 30px;
-     -moz-border-radius: 30px;
-     -ms-border-radius: 30px;
-     -o-border-radius: 30px;
 }
 
 .toast--show {
@@ -259,10 +229,7 @@ input[type="email"] {
 }
 
 /* FONT INPUT */
-::-webkit-input-placeholder,
-:-ms-input-placeholder,
-:-moz-placeholder,
-::-moz-placeholder {
+::-webkit-input-placeholder {
      font-family: "Poppins", sans-serif;
 }
 
