@@ -56,7 +56,6 @@ body {
      background-image: url(img/68747470733a2f2f692e696d6775722e636f6d2f415975745a4f462e706e67.png);
      background-size: contain;
      background-repeat: no-repeat;
-     /* width: 20em ;  Buenos tamaños para responsive */
 }
 
 ul {
@@ -78,14 +77,6 @@ header {
      box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.5);
      position: relative;
 }
-
-/* .navImg {
-     background-image: url(img/68747470733a2f2f692e696d6775722e636f6d2f415975745a4f462e706e67.png);
-     background-repeat: no-repeat;
-     background-size: contain;
-     width: 100vh;
-     height: 100px;
-} */
 
 .nav {
      display: flex;
@@ -149,18 +140,6 @@ main {
      gap: 1rem;
 }
 
-@media screen and (min-width: 470px) {
-     .pokemon-todos {
-          grid-template-columns: 1fr 1fr;
-     }
-}
-
-@media screen and (min-width: 700px) {
-     .pokemon-todos {
-          grid-template-columns: 1fr 1fr 1fr;
-     }
-}
-
 .pokemon {
      border-radius: 0.4rem;
      height: 215px;
@@ -180,7 +159,59 @@ main {
      z-index: -100;
 }
 
-.pantalla-negra {
+.card-pokemon {
+     border-radius: 0.4rem;
+     width: 30%;
+     height: 70%;
+     background-color: purple;
+     text-transform: uppercase;
+     z-index: 0;
+     -webkit-border-radius: 0.4rem;
+}
+
+.card-pokemon-imagen {
+     width: 100%;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: space-evenly;
+     gap: 3px;
+     /* padding-block: 1em; */
+     background-color: var(--clr-white);
+     border-radius: 0.4em;
+     -webkit-border-radius: 0.4em;
+}
+
+.card-pokemon-imagen img {
+     width: 90%;
+     bottom: 6px;
+     max-width: 9rem;
+}
+
+.card-pokemon-info {
+     width: 100%;
+     height: 50%;
+     /* background-color: green; */
+     font-size: 0.3em;
+     /* gap: 1em; */
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: space-around;
+}
+
+.card-pokemon-tipos {
+     width: 100%;
+     height: 60%;
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+     justify-content: space-evenly;
+}
+
+.pantalla-negra
+/*.pantalla-negra--todos*/ {
      border-radius: 0.4rem;
      width: 342px;
      height: 216px;
@@ -195,15 +226,43 @@ main {
      -webkit-border-radius: 0.4rem;
 }
 
+.todos-los-pokemones {
+     border-radius: 0.4rem;
+     width: 100%;
+     height: 100%;
+     background-color: var(--clr-black);
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+     padding-inline: 0.5em;
+     padding-block: 0.5em;
+     font-size: 21px;
+     overflow: scroll;
+     gap: 0.6em;
+     -webkit-border-radius: 0.4rem;
+}
+
+.todos-los-pokemones--oculta {
+     position: absolute;
+     opacity: 0;
+     top: 0;
+     z-index: -100;
+}
+
 /* ME SIRVE QUE CUANDO HAGA EL SUBMIT ESTO OCULTE PANTALLA NEGRA */
 .pantalla-negra--oculta {
+     position: absolute;
      opacity: 0;
+     top: 0;
+     z-index: -100;
 }
 
 /* PARA QUITAR TODA LA PANTALLA TOP */
 .inicio--oculto {
-     /* position: relative; */
+     position: absolute;
      opacity: 0;
+     top: 0;
+     z-index: -100;
 }
 
 .inicio {
@@ -258,7 +317,6 @@ main {
 
 .pokemon-imagen img {
      width: 100%;
-     /* position: relative; */
      bottom: 6px;
      max-width: 9rem;
 }
@@ -476,12 +534,6 @@ main {
      color: var(--clr-black);
 }
 
-/* footer {
-     display: flex;
-     height: 77vh;
-     justify-content: center;
-} */
-
 /* POKEDEX */
 .pokedex {
      /* top: 32px;
@@ -503,9 +555,6 @@ main {
      transform: rotateX(360deg);
      transform-origin: 0% 100%;
      -webkit-transform: rotateX(360deg);
-     -moz-transform: rotateX(360deg);
-     -ms-transform: rotateX(360deg);
-     -o-transform: rotateX(360deg);
 }
 .pokedex-flap figure {
      margin: 0;
@@ -836,9 +885,6 @@ main {
 
 .pokedex-padre {
      position: relative;
-     /*width: 100%;
-     height: 77vh;
-     */
      font-family: "Press Start 2P";
      transition: transform 1s ease;
      -webkit-transition: transform 1s ease;
@@ -903,5 +949,22 @@ main {
           opacity: 1;
      }
      100% {
+     }
+}
+
+::-webkit-scrollbar {
+     width: 0;
+     height: 0;
+}
+
+@media screen and (min-width: 470px) {
+     .pokemon-todos {
+          grid-template-columns: 1fr 1fr;
+     }
+}
+
+@media screen and (min-width: 700px) {
+     .pokemon-todos {
+          grid-template-columns: 1fr 1fr 1fr;
      }
 }

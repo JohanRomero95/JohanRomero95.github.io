@@ -74,3 +74,56 @@ boton.addEventListener("click", () => {
      }
      isOn = !isOn; // Alternar el estado
 });
+
+// Llamado de Api Pokemon
+let URL = "https://pokeapi.co/api/v2/pokemon/";
+
+// Bucle para que llame por numero la pag
+for (let i = 1; i <= 151; i++) {
+     fetch(URL + i)
+          .then((response) => response.json())
+          .then((data) => mostrarPokemon(data));
+}
+
+const listaPokemon = document.querySelector("#listaPokemon");
+const botonesBuscador = document.querySelectorAll(".btn-header");
+
+function mostrarPokemon(poke) {
+     // Para que nos muestre los tipos de pokemons, dependiendo si tiene 1 o mas
+     let tipos = poke.types.map(
+          (types) => `<p class="${types.type.name} tipo">${types.type.name}</p>`
+     );
+     tipos = tipos.join("");
+
+     const div = document.createElement("div");
+     div.classList.add("card-pokemon");
+     div.innerHTML = `
+    <div class="card-pokemon-imagen">
+        <img src="${poke.sprites.other["official-artwork"].front_default}"
+            alt="${poke.name}">
+        <div class="card-pokemon-info">
+            <div class="card-nombre-contenedor">
+                <!-- <p class="pokemon-id">#${poke.id}</p> -->
+                <h2 class="card-pokemon-nombre">${poke.name}</h2>
+            </div>
+            <div class="card-pokemon-tipos">
+               ${tipos}
+            </div>
+        </div>
+    </div>
+</div>`;
+     listaPokemon.append(div);
+}
+
+const botonBusqueda = document.getElementById("busqueda-pokemon");
+const inputPokemon = document.getElementById("name-pokemon");
+
+botonBusqueda.addEventListener("click", (poke) => {
+     const nombrePokemon = inputPokemon.value;
+
+     if (nombrePokemon === poke.name) {
+          console.log("Esta funcionando");
+     } else {
+          console.log("Te confundiste de nombre");
+     }
+});

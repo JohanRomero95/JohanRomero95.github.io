@@ -44,7 +44,11 @@ registro.addEventListener("submit", (e) => {
           }, 4000);
           return;
      }
-     Users.push({ nombre: nombre, correo: correo, contrasena: contrasena });
+     Users.push({
+          nombre: nombre,
+          correo: correo,
+          contrasena: contrasena,
+     });
      localStorage.setItem("usuario", JSON.stringify(Users));
      mostrarModal();
 });
