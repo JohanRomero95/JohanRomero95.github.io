@@ -115,6 +115,35 @@ function mostrarPokemon(poke) {
      listaPokemon.append(div);
 }
 
+botonesBuscador.forEach((boton) =>
+     boton.addEventListener("click", (event) => {
+          const botonId = event.currentTarget.id;
+
+          listaPokemon.innerHTML = "";
+
+          for (let i = 1; i <= 151; i++) {
+               fetch(URL + i)
+                    .then((response) => response.json())
+                    .then((data) => {
+                         if (botonId === "ver-todos") {
+                              mostrarPokemon(data);
+                         } else {
+                              const tipos = data.types.map(
+                                   (types) => types.type.name
+                              );
+                              if (
+                                   tipos.some((tipos) =>
+                                        tipos.includes(botonId)
+                                   )
+                              ) {
+                                   mostrarPokemon(data);
+                              }
+                         }
+                    });
+          }
+     })
+);
+
 const botonBusqueda = document.getElementById("busqueda-pokemon");
 const inputPokemon = document.getElementById("name-pokemon");
 
