@@ -1,236 +1,238 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap");
 
 :root {
-     --color-rojo: #ff0000;
-     --color-verde: #6fd30c;
-     --amarillo-pikachu: #fff836dc;
-     --color-blanco: #ffffff;
-     --color-negro: #000;
+  --color-rojo: #ff0000;
+  --color-verde: #6fd30c;
+  --amarillo-pikachu: #fff836dc;
+  --color-blanco: #ffffff;
+  --color-negro: #000;
 }
 /* Estilos para centrar el contenido */
 body {
-     box-sizing: border-box;
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     height: 100vh; /* Establece la altura del cuerpo para ocupar toda la pantalla */
-     margin: 0; /* Elimina el margen predeterminado del cuerpo */
-     background-image: url("img/pokemon_wallpaper___poke_ball_theme_by_0trinima0_dd2zouo-pre.jpg");
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-position: center;
-     overflow-x: hidden;
-     font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Establece la altura del cuerpo para ocupar toda la pantalla */
+  margin: 0; /* Elimina el margen predeterminado del cuerpo */
+  background-image: url("img/pokemon_wallpaper___poke_ball_theme_by_0trinima0_dd2zouo-pre.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow-x: hidden;
+  font-family: "Poppins", sans-serif;
 }
 
 .navBar {
-     position: absolute;
-     top: 0;
-     margin-top: 3em;
-     padding: 3em;
-     width: 16em;
-     background-image: url(img/68747470733a2f2f692e696d6775722e636f6d2f415975745a4f462e706e67.png);
-     background-size: contain;
-     background-repeat: no-repeat;
-     /* width: 20em ;  Buenos tamaños para responsive */
+  position: absolute;
+  top: 0;
+  margin-top: 3em;
+  padding: 3em;
+  width: 16em;
+  background-image: url(img/68747470733a2f2f692e696d6775722e636f6d2f415975745a4f462e706e67.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* width: 20em ;  Buenos tamaños para responsive */
 }
 
 .navBar img {
-     width: 100%;
+  width: 100%;
 }
 
 /* Estilos para el formulario */
 #registroForm,
 #loginForm {
-     position: relative;
-     margin-top: 2em;
-     display: flex;
-     flex-direction: column;
-     justify-content: space-between;
-     width: 18em;
-     height: 30em;
-     opacity: 0.98;
-     text-align: center;
-     background-color: var(--color-blanco);
-     padding: 1em;
-     border-radius: 20px;
-     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-     -webkit-border-radius: 20px;
+  position: relative;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 18em;
+  height: 30em;
+  opacity: 0.98;
+  text-align: center;
+  background-color: var(--color-blanco);
+  padding: 1em;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 20px;
 }
 
 #registroForm span,
 #loginForm span {
-     font-size: 0.8em;
+  font-size: 0.8em;
 }
 
 #registroForm p,
 #loginForm p {
-     font-weight: bold;
-     font-size: 2.5em;
-     margin: 10px;
+  font-weight: bold;
+  font-size: 2.5em;
+  margin: 10px;
 }
 
 #registroForm a,
 #loginForm a {
-     font-size: 0.8em;
-     text-decoration: none;
-     color: rgba(0, 0, 0, 0.6);
-     font-weight: 600;
-     transition: all 1s;
-     -webkit-transition: all 1s;
+  font-size: 0.8em;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 600;
+  transition: all 1s;
+  -webkit-transition: all 1s;
 }
 
 /* Estilos para el botón Registrar */
 button[type="submit"] {
-     padding: 13px;
-     margin-bottom: 0.6em;
-     margin-left: 10px;
-     margin-right: 0.5em;
-     background-color: var(--amarillo-pikachu);
-     color: var(--color-blanco);
-     border: 2px solid rgba(0, 0, 0, 0.5);
-     cursor: pointer;
-     font-weight: 800;
-     color: rgba(0, 0, 0, 0.9);
-     border-radius: 30px;
-     transition: 0.3s, 0.1s;
-     -webkit-transition: 0.3s, color 0.2s;
-     -webkit-border-radius: 30px;
+  padding: 13px;
+  margin-bottom: 0.6em;
+  margin-left: 10px;
+  margin-right: 0.5em;
+  background-color: var(--amarillo-pikachu);
+  color: var(--color-blanco);
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.9);
+  border-radius: 30px;
+  transition: 0.3s, 0.1s;
+  -webkit-transition:
+    0.3s,
+    color 0.2s;
+  -webkit-border-radius: 30px;
 }
 
 button[type="submit"]:hover {
-     background-color: var(--color-rojo);
-     transform: scale(1.1);
-     -webkit-transform: scale3d(1.1, 1.1, 0.2);
+  background-color: var(--color-rojo);
+  transform: scale(1.1);
+  -webkit-transform: scale3d(1.1, 1.1, 0.2);
 }
 
 /* Estilos para los campos de entrada */
 input[type="text"],
 input[type="password"],
 input[type="email"] {
-     display: flex;
-     flex-direction: column;
-     width: 87%;
-     padding: 10px;
-     margin: 0px 0px -15px 8px;
-     border: none;
-     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-     outline: none;
-     font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 87%;
+  padding: 10px;
+  margin: 0px 0px -15px 8px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+  font-size: 16px;
 }
 
 .pokeball {
-     z-index: 10;
-     top: 26.4em;
-     right: 0.1em;
-     position: absolute;
-     width: 5em;
-     height: 5em;
-     background-image: url(img/Poké_Ball_icon.svg.png);
-     background-size: cover;
-     pointer-events: none;
-     background-repeat: no-repeat;
+  z-index: 10;
+  top: 26.4em;
+  right: 0.1em;
+  position: absolute;
+  width: 5em;
+  height: 5em;
+  background-image: url(img/Poké_Ball_icon.svg.png);
+  background-size: cover;
+  pointer-events: none;
+  background-repeat: no-repeat;
 }
 
 /* ESTILOS DEL MODAL */
 .modal {
-     position: fixed;
-     top: 0;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     background: rgba(0, 0, 0, 0.5);
-     backdrop-filter: blur(10px); /* Aplicar un desenfoque de 5px al fondo */
-     z-index: 1000;
-     display: flex;
-     opacity: 0;
-     pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px); /* Aplicar un desenfoque de 5px al fondo */
+  z-index: 1000;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .modal__container {
-     width: 64%;
-     background-color: var(--color-blanco);
-     margin: auto;
-     max-width: 600px;
-     max-height: 90%;
-     border-radius: 20px;
-     padding: 3em 2.5em;
-     display: grid;
-     gap: 1em;
-     place-items: center;
-     grid-auto-columns: 100%;
-     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-     -webkit-border-radius: 20px;
+  width: 64%;
+  background-color: var(--color-blanco);
+  margin: auto;
+  max-width: 600px;
+  max-height: 90%;
+  border-radius: 20px;
+  padding: 3em 2.5em;
+  display: grid;
+  gap: 1em;
+  place-items: center;
+  grid-auto-columns: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 20px;
 }
 
 .modal--show {
-     opacity: 1;
-     pointer-events: unset;
+  opacity: 1;
+  pointer-events: unset;
 }
 
 .modal__container p {
-     font-size: 0.9em;
+  font-size: 0.9em;
 }
 
 .modal__title {
-     font-size: 2em;
-     text-align: center;
+  font-size: 2em;
+  text-align: center;
 }
 
 .modal__paragraph {
-     margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .modal__img {
-     width: 90%;
-     max-width: 300px;
+  width: 90%;
+  max-width: 300px;
 }
 
 .modal__close {
-     text-decoration: none;
-     color: var(--color-blanco);
-     background-color: #000;
-     padding: 1em 3em;
-     border: 1px solid;
-     cursor: pointer;
-     border-radius: 6px;
-     font-weight: 300;
-     display: inline-block;
-     transition: background-color 0.3s;
-     -webkit-border-radius: 6px;
-     -webkit-transition: background-color 0.3s;
+  text-decoration: none;
+  color: var(--color-blanco);
+  background-color: #000;
+  padding: 1em 3em;
+  border: 1px solid;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 300;
+  display: inline-block;
+  transition: background-color 0.3s;
+  -webkit-border-radius: 6px;
+  -webkit-transition: background-color 0.3s;
 }
 
 .modal__close:hover {
-     color: black;
-     background-color: var(--color-blanco);
+  color: black;
+  background-color: var(--color-blanco);
 }
 
 .toast {
-     position: fixed;
-     top: 15.5%;
-     left: 50%;
-     transform: translateX(-50%);
-     background-color: var(--color-negro);
-     min-width: 17.5em;
-     text-align: center;
-     color: var(--color-blanco);
-     padding: 11px 20px;
-     border-radius: 30px;
-     opacity: 0;
-     transition: opacity 0.5s;
-     z-index: 1000;
-     -webkit-transition: opacity 0.5s;
-     -webkit-border-radius: 30px;
+  position: fixed;
+  top: 15.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-negro);
+  min-width: 17.5em;
+  text-align: center;
+  color: var(--color-blanco);
+  padding: 11px 20px;
+  border-radius: 30px;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 1000;
+  -webkit-transition: opacity 0.5s;
+  -webkit-border-radius: 30px;
 }
 
 .toast--show {
-     opacity: 1;
+  opacity: 1;
 }
 
 /* FONT INPUT */
 ::-webkit-input-placeholder {
-     font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* INPUT IMPORTANTES */
@@ -238,30 +240,30 @@ input,
 textarea,
 input:focus,
 textarea:focus {
-     font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 /* Estilo por defecto del input */
 input {
-     border-bottom: 2px solid #000; /* Borde inferior negro */
+  border-bottom: 2px solid #000; /* Borde inferior negro */
 }
 
 /* Estilo para el input válido */
 input:valid {
-     border-bottom: 2px solid var(--color-verde); /* Borde inferior verde */
+  border-bottom: 2px solid var(--color-verde); /* Borde inferior verde */
 }
 
 /* Estilo para el input inválido */
 input:invalid {
-     border-bottom: 2px solid var(--color-rojo); /* Borde inferior rojo */
+  border-bottom: 2px solid var(--color-rojo); /* Borde inferior rojo */
 }
 
 .error-message {
-     display: none; /* Oculta el mensaje de error por defecto */
+  display: none; /* Oculta el mensaje de error por defecto */
 }
 input:invalid + .error-message {
-     display: block; /* Muestra el mensaje de error cuando el input es inválido */
-     color: var(--color-rojo); /* Color del mensaje de error */
+  display: block; /* Muestra el mensaje de error cuando el input es inválido */
+  color: var(--color-rojo); /* Color del mensaje de error */
 }
 
 /* ARRIBA IMPORTANTE */

@@ -1,57 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registro</title>
-    <link rel="stylesheet" href="css/registro.css">
-</head>
+    <link rel="stylesheet" href="css/registro.css" />
+  </head>
 
-<body>
+  <body>
     <nav class="navBar">
-        <img>
+      <img />
     </nav>
     <main>
-        <section>
-            <form id="registroForm">
-                <p>Registrate</p>
-                <input type="text" id="nombre" required placeholder="Nombre de usuario" pattern="[a-zA-Z ]{2,30}">
-                <span id="formError" class="error-message">Por favor, ingresa un usuario válido.</span>
+      <section>
+        <form id="registroForm">
+          <p>Registrate</p>
+          <input
+            type="text"
+            id="nombre"
+            required
+            placeholder="Nombre de usuario"
+            pattern="[a-zA-Z ]{2,30}"
+          />
+          <span id="formError" class="error-message"
+            >Por favor, ingresa un usuario válido.</span
+          >
 
-                <input type="email" id="correo" required placeholder="Correo Electronico">
-                <span id="formError" class="error-message">Por favor, ingresa un correo válido.</span>
+          <input
+            type="email"
+            id="correo"
+            required
+            placeholder="Correo Electronico"
+          />
+          <span id="formError" class="error-message"
+            >Por favor, ingresa un correo válido.</span
+          >
 
-                <input type="password" id="contrasena" required placeholder="Contraseña"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
-                <span id="formError" class="error-message">Mayúscula, número y 6 caracteres</span>
+          <input
+            type="password"
+            id="contrasena"
+            required
+            placeholder="Contraseña"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+          />
+          <span id="formError" class="error-message"
+            >Mayúscula, número y 6 caracteres</span
+          >
 
-                <a href="login.html">Ya estas Registrado? Ingresa aqui!</a>
+          <a href="login.html">Ya estas Registrado? Ingresa aqui!</a>
 
-                <div class="pokeball"></div>
+          <div class="pokeball"></div>
 
-                <button type="submit" id="registro">Registrar</button>
-            </form>
-        </section>
+          <button type="submit" id="registro">Registrar</button>
+        </form>
+      </section>
     </main>
 
     <section class="modal">
-        <div class="modal__container">
-            <img src="css/img/pokedex.png" class="modal__img">
-            <h2 class="modal__title">¡Registro Exitoso!</h2>
-            <p class="modal__paragraph">¡Bienvenido al emocionante mundo de los Pokémon! 🌟
+      <div class="modal__container">
+        <img src="css/img/pokedex.png" class="modal__img" />
+        <h2 class="modal__title">¡Registro Exitoso!</h2>
+        <p class="modal__paragraph">
+          ¡Bienvenido al emocionante mundo de los Pokémon! 🌟 Estamos encantados
+          de tenerte como parte de nuestra comunidad de entrenadores. Prepárate
+          para embarcarte en una emocionante aventura en la que capturarás,
+          entrenarás y lucharás con tus Pokémon en busca de la gloria.
+        </p>
 
-                Estamos encantados de tenerte como parte de nuestra comunidad de entrenadores. Prepárate para embarcarte
-                en una emocionante aventura en la que capturarás, entrenarás y lucharás con tus Pokémon en busca de la
-                gloria.
-            <div>
-                <a class="modal__close">Cerrar Modal</a>
-            </div>
+        <div>
+          <a class="modal__close">Cerrar Modal</a>
         </div>
+      </div>
     </section>
     <div class="toast"></div>
 
     <script src="registro.js"></script>
-</body>
-
+  </body>
 </html>

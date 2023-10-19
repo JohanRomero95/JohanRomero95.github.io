@@ -1,54 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="css/login.css">
-</head>
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
 
-<body>
+  <body>
     <nav class="navBar">
-        <img>
+      <img />
     </nav>
     <main>
-        <section>
-            <form id="loginForm">
-                <p>Iniciar Sesión</p>
-                <input type="email" id="correoLogin" required placeholder="Correo Electronico">
-                <span id="formError" class="error-message">Por favor, inserte un correo electronico.</span>
+      <section>
+        <form id="loginForm">
+          <p>Iniciar Sesión</p>
+          <input
+            type="email"
+            id="correoLogin"
+            required
+            placeholder="Correo Electronico"
+          />
+          <span id="formError" class="error-message"
+            >Por favor, inserte un correo electronico.</span
+          >
 
-                <input type="password" id="contrasenaLogin" required placeholder="Contraseña">
-                <span id="formError" class="error-message">Por favor, inserte clave.</span>
+          <input
+            type="password"
+            id="contrasenaLogin"
+            required
+            placeholder="Contraseña"
+          />
+          <span id="formError" class="error-message"
+            >Por favor, inserte clave.</span
+          >
 
-                <a href="registro.html">No tienes cuenta? Registrate aqui!</a>
+          <a href="registro.html">No tienes cuenta? Registrate aqui!</a>
 
-                <div class="pokeball"></div>
+          <div class="pokeball"></div>
 
-                <button type="submit">Iniciar Sesión</button>
-            </form>
-        </section>
+          <button type="submit">Iniciar Sesión</button>
+        </form>
+      </section>
     </main>
     <section class="modal">
-        <div class="modal__container">
-            <img src="css/img/pokedex.png" class="modal__img">
-            <h2 class="modal__title"></h2>
-            <p class="modal__paragraph">Tu viaje comienza ahora, ¡así que elige a tu primer compañero Pokémon sabiamente
-                y enfréntate a desafíos
-                que te esperan! No olvides explorar el mundo, conocer a otros entrenadores y desbloquear secretos
-                Pokémon.
-                <br><br>
-                ¡Buena suerte y que la diversión Pokémon te acompañe en cada paso de tu viaje! 🌟🔥🌿💧
-            </p>
-            <div>
-                <a class="modal__close">Cerrar Modal</a>
-            </div>
+      <div class="modal__container">
+        <img src="css/img/pokedex.png" class="modal__img" />
+        <h2 class="modal__title"></h2>
+        <p class="modal__paragraph">
+          Tu viaje comienza ahora, ¡así que elige a tu primer compañero Pokémon
+          sabiamente y enfréntate a desafíos que te esperan! No olvides explorar
+          el mundo, conocer a otros entrenadores y desbloquear secretos Pokémon.
+          <br /><br />
+          ¡Buena suerte y que la diversión Pokémon te acompañe en cada paso de
+          tu viaje! 🌟🔥🌿💧
+        </p>
+        <div>
+          <a class="modal__close">Cerrar Modal</a>
         </div>
+      </div>
     </section>
     <div class="toast"></div>
 
     <script src="login.js"></script>
-</body>
-
+  </body>
 </html>
