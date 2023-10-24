@@ -1,159 +1,153 @@
-/* eslint-disable no-undef */
-// Apertura Pokedex
 const boton = document.querySelector("#btnOpen");
 const pokedex = document.querySelector(".pokedex");
+const divPokedexPadre = document.querySelector(".pokedex-padre");
+const input = document.querySelector(".parpadeando-input");
+const pokedexBackground = document.querySelector(".pokedex-pad-background");
+const pantalla = document.querySelector(".pantalla-negra");
+const URL = "https://pokeapi.co/api/v2/pokemon/";
+const listaPokemon = document.querySelector("#listaPokemon");
+const botonesBuscador = document.querySelectorAll(".btn-header");
+const botonBusqueda = document.getElementById("busqueda-pokemon");
+const inputPokemon = document.getElementById("name-pokemon");
+const todosLosPokemon = document.querySelector(".todos-los-pokemones");
 
-boton.addEventListener("click", () => {
-     pokedex.classList.toggle("closed");
-});
-
-// Desplazamiento pokedex hacia abajo y a la izquierda
 let haciaAbajo = false;
 let haciaLaIzquierda = false;
+let encendido = false;
+let isOn = true;
 
 boton.addEventListener("click", () => {
-     const div = document.querySelector(".pokedex-padre");
-     if (haciaAbajo && haciaLaIzquierda) {
-          // Si ya se ha movido hacia abajo, restaura la posición original
-          div.style.transform = "translateY(0)";
-     } else {
-          div.style.transform = `translate(${-45}px, ${180}px)`;
-     }
-     // Cambia el estado de "movidoAbajo" al valor opuesto
-     haciaAbajo = !haciaAbajo;
-     haciaLaIzquierda = !haciaLaIzquierda;
+  pokedex.classList.toggle("closed");
+
+  // Desplazamiento
+  if (haciaAbajo && haciaLaIzquierda) {
+    divPokedexPadre.style.transform = "translateY(0)";
+  } else {
+    divPokedexPadre.style.transform = `translate(${-45}px, ${180}px)`;
+  }
+  haciaAbajo = !haciaAbajo;
+  haciaLaIzquierda = !haciaLaIzquierda;
+
+  // Encender/apagar
+  encendido = !encendido;
+  pokedexBackground.classList.toggle("on", encendido);
+
+  // Animación de encendido
+  if (isOn) {
+    pantalla.classList.add("shutdown");
+    const contenido = "Bienvenido";
+    let i = 0;
+    const agregarLetra = (i) => {
+      pantalla.textContent = contenido.slice(0, i);
+    };
+    setTimeout(() => {
+      const animateText = () => {
+        if (i <= contenido.length) {
+          agregarLetra(i);
+          i++;
+          setTimeout(animateText, 235);
+        }
+      };
+      animateText();
+    }, 1200);
+  } else {
+    pantalla.classList.remove("shutdown");
+    setTimeout(() => {
+      pantalla.classList.remove("oculta");
+    }, 300);
+    listaPokemon.classList.add("oculta");
+  }
+
+  isOn = !isOn;
 });
 
-// Parpadeo input
-const input = document.querySelector(".parpadeando-input");
 input.addEventListener("focus", () => {
-     input.style.animation = "none"; // Detiene la animación cuando seleccionan el input
+  input.style.animation = "none";
 });
 
 input.addEventListener("blur", () => {
-     input.style.animation = "parpadeo 1s infinite"; // Reanuda la animación cuando salen del input
+  input.style.animation = "parpadeo 1s infinite";
 });
 
-const pokedexBackground = document.querySelector(".pokedex-pad-background");
-let encendido = false;
-
-boton.addEventListener("click", function () {
-     encendido = !encendido;
-     pokedexBackground.classList.toggle("on", encendido);
-});
-
-const element = document.querySelector(".pantalla-negra");
-let isOn = true;
-
-// Cuando abre hace animacion de encendido + agrega letra x letra
-boton.addEventListener("click", () => {
-     if (isOn) {
-          element.classList.add("shutdown");
-          const pantalla = document.querySelector(".pantalla-negra");
-          const contenido = (pantalla.innerHTMLtextContent = "Bienvenido");
-
-          // Letra 1 x 1
-
-          let i = 0;
-
-          agregarLetra = (i) => {
-               pantalla.textContent = contenido.slice(0, i);
-          };
-
-          setTimeout(() => {
-               animateText = () => {
-                    if (i <= contenido.length) {
-                         agregarLetra(i);
-                         i++;
-                         setTimeout(animateText, 235);
-                    }
-               };
-               animateText();
-          }, 1200);
-     } else {
-          element.classList.remove("shutdown");
-     }
-     isOn = !isOn; // Alternar el estado
-});
-
-// Llamado de Api Pokemon
-const URL = "https://pokeapi.co/api/v2/pokemon/";
-
-// Bucle para que llame por numero la pag
-for (let i = 1; i <= 151; i++) {
-     fetch(URL + i)
-          .then((response) => response.json())
-          .then((data) => mostrarPokemon(data));
-}
-
-const listaPokemon = document.querySelector("#listaPokemon");
-const botonesBuscador = document.querySelectorAll(".btn-header");
-
+// Función para mostrar Pokemon en la lista
 function mostrarPokemon(poke) {
-     // Para que nos muestre los tipos de pokemons, dependiendo si tiene 1 o mas
-     let tipos = poke.types.map(
-          (types) => `<p class="${types.type.name} tipo">${types.type.name}</p>`
-     );
-     tipos = tipos.join("");
-
-     const div = document.createElement("div");
-     div.classList.add("card-pokemon");
-     div.innerHTML = `
-    <div class="card-pokemon-imagen">
-        <img src="${poke.sprites.other["official-artwork"].front_default}"
-            alt="${poke.name}">
-        <div class="card-pokemon-info">
-            <div class="card-nombre-contenedor">
-                <!-- <p class="pokemon-id">#${poke.id}</p> -->
+  let tipos = poke.types
+    .map((types) => `<p class="${types.type.name} tipo">${types.type.name}</p>`)
+    .join("");
+  const div = document.createElement("div");
+  div.classList.add("card-pokemon");
+  div.innerHTML = `
+        <div class="card-pokemon-imagen">
+            <img src="${poke.sprites.other["official-artwork"].front_default}"
+                alt="${poke.name}">
+            <div class="card-pokemon-info">
                 <h2 class="card-pokemon-nombre">${poke.name}</h2>
-            </div>
-            <div class="card-pokemon-tipos">
-               ${tipos}
+                <div class="card-pokemon-tipos">${tipos}</div>
             </div>
         </div>
-    </div>
-</div>`;
-     listaPokemon.append(div);
+    `;
+  listaPokemon.append(div);
+}
+
+/* Se inicia la lista */
+for (let i = 1; i <= 151; i++) {
+  fetch(URL + i)
+    .then((response) => response.json())
+    .then((data) => mostrarPokemon(data));
 }
 
 botonesBuscador.forEach((boton) =>
-     boton.addEventListener("click", (event) => {
-          const botonId = event.currentTarget.id;
+  boton.addEventListener("click", (event) => {
+    const botonId = event.currentTarget.id;
+    pantalla.classList.remove("shutdown");
+    pantalla.classList.add("oculta");
+    todosLosPokemon.classList.remove("oculta");
+    //
+    listaPokemon.innerHTML = "";
 
-          listaPokemon.innerHTML = "";
-
-          for (let i = 1; i <= 151; i++) {
-               fetch(URL + i)
-                    .then((response) => response.json())
-                    .then((data) => {
-                         if (botonId === "ver-todos") {
-                              mostrarPokemon(data);
-                         } else {
-                              const tipos = data.types.map(
-                                   (types) => types.type.name
-                              );
-                              if (
-                                   tipos.some((tipos) =>
-                                        tipos.includes(botonId)
-                                   )
-                              ) {
-                                   mostrarPokemon(data);
-                              }
-                         }
-                    });
+    for (let i = 1; i <= 151; i++) {
+      fetch(URL + i)
+        .then((response) => response.json())
+        .then((data) => {
+          if (botonId === "ver-todos") {
+            mostrarPokemon(data);
+          } else {
+            const tipos = data.types.map((types) => types.type.name);
+            if (tipos.includes(botonId)) {
+              mostrarPokemon(data);
+            }
           }
-     })
+        });
+    }
+  })
 );
 
-const botonBusqueda = document.getElementById("busqueda-pokemon");
-const inputPokemon = document.getElementById("name-pokemon");
+botonBusqueda.addEventListener("click", () => {
+  const nombrePokemon = inputPokemon.value.toLowerCase().trim();
+  listaPokemon.innerHTML = "";
+  todosLosPokemon.classList.remove("oculta");
+  pantalla.classList.add("oculta");
+  pantalla.classList.remove("shutdown");
 
-botonBusqueda.addEventListener("click", (poke) => {
-     const nombrePokemon = inputPokemon.value;
+  fetch(URL + nombrePokemon)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error("Pokemon no encontrado.");
+    })
+    .then((data) => {
+      mostrarPokemon(data);
+    })
+    .catch(() => {
+      const colorOriginal = listaPokemon.style.color;
+      listaPokemon.textContent = "Nombre incorrecto o el Pokemon no existe.";
+      listaPokemon.style.color = " var(--amarillo-pikachu)";
 
-     if (nombrePokemon === poke.name) {
-          console.log("Esta funcionando");
-     } else {
-          console.log("Te confundiste de nombre");
-     }
+      botonBusqueda.addEventListener("focusout", () => {
+        listaPokemon.style.color = colorOriginal;
+      });
+    });
+
+  input.value = ". . .";
 });

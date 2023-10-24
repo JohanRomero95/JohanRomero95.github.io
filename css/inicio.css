@@ -152,7 +152,7 @@ main {
 }
 
 /* SIRVE PARA MOSTRAR EL SUBMIT DEL POKEMON */
-.pokemon--oculta {
+.oculta {
   position: absolute;
   opacity: 0;
   top: 0;
@@ -166,6 +166,7 @@ main {
   background-color: purple;
   text-transform: uppercase;
   z-index: 0;
+  cursor: pointer;
   -webkit-border-radius: 0.4rem;
 }
 
@@ -221,7 +222,7 @@ main {
   align-items: center;
   justify-content: center;
   font-size: 29px;
-  z-index: 0;
+  z-index: -10;
   /* opacity: 1; */
   -webkit-border-radius: 0.4rem;
 }
@@ -242,20 +243,21 @@ main {
   -webkit-border-radius: 0.4rem;
 }
 
-.todos-los-pokemones--oculta {
+/* .todos-los-pokemones--oculta {
   position: absolute;
   opacity: 0;
   top: 0;
-  z-index: -100;
-}
+  z-index: -10;
+  height: 1px;
+} */
 
 /* ME SIRVE QUE CUANDO HAGA EL SUBMIT ESTO OCULTE PANTALLA NEGRA */
-.pantalla-negra--oculta {
+/* .pantalla-negra--oculta {
   position: absolute;
   opacity: 0;
   top: 0;
   z-index: -100;
-}
+} */
 
 /* PARA QUITAR TODA LA PANTALLA TOP */
 .inicio--oculto {

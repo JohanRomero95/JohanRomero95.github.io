@@ -2,96 +2,97 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokédex</title>
-    <link rel="stylesheet" href="css/inicio.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokédex</title>
+  <link rel="stylesheet" href="css/inicio.css">
 </head>
 
 <body>
-    <header>
-        <div class="navBar">
-            <img>
-        </div>
-    </header>
-    <main>
-        <div class="pokedex-padre">
-            <div class="pokedex closed">
-                <div class="pokedex-top-part">
-                    <div class="pokedex-flap">
-                        <figure class="pokedex-flap-front"></figure>
-                        <div class="triangulo-amarillo" id="btnOpen"></div>
-                        <figure class="pokedex-flap-back">
-                            <div class="pokedex-top-screen">
+  <header>
+    <div class="navBar">
+      <img>
+    </div>
+  </header>
+  <main>
+    <div class="pokedex-padre">
+      <div class="pokedex closed">
+        <div class="pokedex-top-part">
+          <div class="pokedex-flap">
+            <figure class="pokedex-flap-front"></figure>
+            <div class="triangulo-amarillo" id="btnOpen"></div>
+            <figure class="pokedex-flap-back">
+              <div class="pokedex-top-screen">
 
 
-                                <div class="pantalla-negra--oculta">
-                                </div>
+                <div class="pantalla-negra">
+                </div>
 
-                                <div class="pokemon--oculta">
-                                    <div class="pokemon-imagen">
-                                        <p class="pokemon-id-back">#025</p>
-                                        <div class="info-pokemon">
-                                            <h2 class="pokemon-nombre">Pikachu</h2>
-                                        </div>
-                                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
-                                            alt="Pikachu">
-                                        <div class="pokemon-tipos">
-                                            <p class="electric tipo">ELECTRIC</p>
-                                            <p class="fighting tipo">FIGHTING</p>
-                                        </div>
-                                    </div>
-                                    <div class="pokemon-info">
-                                        <div class="nombre-contenedor">
-                                        </div>
-                                        <div class="pokemon-stats">
-                                            <div class="modif-stat">
-                                                <p class="stat-text">Tamaño</p>
-                                                <p class="stat">123m</p>
-                                            </div>
-                                            <div class="modif-stat">
-                                                <p class="stat-text">Peso</p>
-                                                <p class="stat">300kg</p>
-                                            </div>
-                                        </div>
-                                        <div class="stats-pokemon">
-                                            <div class="stat-group">
-                                                <span>HP</span>
-                                                <div class="progress-bar"></div>
-                                                <span class="counter-stat">45</span>
-                                            </div>
-                                            <div class="stat-group">
-                                                <span>Atk</span>
-                                                <div class="progress-bar"></div>
-                                                <span class="counter-stat">18</span>
-                                            </div>
-                                            <div class="stat-group">
-                                                <span>Dfs</span>
-                                                <div class="progress-bar"></div>
-                                                <span class="counter-stat">36</span>
-                                            </div>
-                                            <div class="stat-group">
-                                                <span>S.Atk</span>
-                                                <div class="progress-bar"></div>
-                                                <span class="counter-stat">45</span>
-                                            </div>
-                                            <div class="stat-group">
-                                                <span>S.D</span>
-                                                <div class="progress-bar"></div>
-                                                <span class="counter-stat">90</span>
-                                            </div>
-                                            <div class="stat-group">
-                                                <span>Speed</span>
-                                                <div class="progress-bar"></div>
-                                                <span class="counter-stat">60</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="pokemon oculta">
+                  <div class="pokemon-imagen">
+                    <p class="pokemon-id-back">#025</p>
+                    <div class="info-pokemon">
+                      <h2 class="pokemon-nombre">Pikachu</h2>
+                    </div>
+                    <img
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+                      alt="Pikachu">
+                    <div class="pokemon-tipos">
+                      <p class="electric tipo">ELECTRIC</p>
+                      <p class="fighting tipo">FIGHTING</p>
+                    </div>
+                  </div>
+                  <div class="pokemon-info">
+                    <div class="nombre-contenedor">
+                    </div>
+                    <div class="pokemon-stats">
+                      <div class="modif-stat">
+                        <p class="stat-text">Tamaño</p>
+                        <p class="stat">123m</p>
+                      </div>
+                      <div class="modif-stat">
+                        <p class="stat-text">Peso</p>
+                        <p class="stat">300kg</p>
+                      </div>
+                    </div>
+                    <div class="stats-pokemon">
+                      <div class="stat-group">
+                        <span>HP</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">45</span>
+                      </div>
+                      <div class="stat-group">
+                        <span>Atk</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">18</span>
+                      </div>
+                      <div class="stat-group">
+                        <span>Dfs</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">36</span>
+                      </div>
+                      <div class="stat-group">
+                        <span>S.Atk</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">45</span>
+                      </div>
+                      <div class="stat-group">
+                        <span>S.D</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">90</span>
+                      </div>
+                      <div class="stat-group">
+                        <span>Speed</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">60</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                                <div class="todos-los-pokemones" id="listaPokemon">
-                                    <!-- <div class="card-pokemon">
+                <div class="todos-los-pokemones oculta" id="listaPokemon">
+                  <!-- <div class="card-pokemon">
                                         <div class="card-pokemon-imagen">
                                             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
                                                 alt="Pikachu">
@@ -106,86 +107,76 @@
                                             </div>
                                         </div>
                                     </div> -->
-
-
-
-
-
-
-
-
-
-                                </div>
-
-
-                            </div>
-                            <div class="pokedex-bg-screen"></div>
-                            <div class="pokedex-bg-gray"></div>
-                        </figure>
-                    </div>
                 </div>
 
-                <div class="pokedex-separator"></div>
-
-                <div class="pokedex-bottom-part">
-                    <div class="pokedex-pad-background">
-                        <div class="pokedex-pad"></div>
-                        <div class="pokedex-pad-circle"></div>
-                        <div class="flechader"></div>
-                        <div class="flechaizq"></div>
-                        <div class="flechaarri"></div>
-                        <div class="flechaabaj"></div>
-                    </div>
-                    <div class="pokedex-bottom-screen">
-                        <div class="pokemon3">
-                            <label for="name-pokemon">Nombre Pokémon</label>
-                            <input type="text" id="name-pokemon" class="parpadeando-input" value=". . .">
-
-                            <ul class="nav-list">
-                                <li class="nav-item"><button class="btn btn-header" id="ver-todos">Ver todos</button>
-                                </li>
-                                <li class="nav-item"><button class="btn btn-header normal" id="normal">Normal</button>
-                                </li>
-                                <li class="nav-item"><button class="btn btn-header fire" id="fire">Fire</button></li>
-                                <li class="nav-item"><button class="btn btn-header water" id="water">Water</button></li>
-                                <li class="nav-item"><button class="btn btn-header grass" id="grass">Grass</button></li>
-                                <li class="nav-item"><button class="btn btn-header electric"
-                                        id="electric">Electric</button></li>
-                                <li class="nav-item"><button class="btn btn-header ice" id="ice">Ice</button></li>
-                                <li class="nav-item"><button class="btn btn-header fighting"
-                                        id="fighting">Fighting</button></li>
-                                <li class="nav-item"><button class="btn btn-header poison" id="poison">Poison</button>
-                                </li>
-                                <li class="nav-item"><button class="btn btn-header ground" id="ground">Ground</button>
-                                </li>
-                                <li class="nav-item"><button class="btn btn-header flying" id="flying">Flying</button>
-                                </li>
-                                <li class="nav-item"><button class="btn btn-header psychic"
-                                        id="psychic">Psychic</button></li>
-                                <li class="nav-item"><button class="btn btn-header bug" id="bug">Bug</button></li>
-                                <li class="nav-item"><button class="btn btn-header rock" id="rock">Rock</button></li>
-                                <li class="nav-item"><button class="btn btn-header ghost" id="ghost">Ghost</button></li>
-                                <li class="nav-item"><button class="btn btn-header dark" id="dark">Dark</button></li>
-                                <li class="nav-item"><button class="btn btn-header dragon" id="dragon">Dragon</button>
-                                </li>
-                                <li class="nav-item"><button class="btn btn-header steel" id="steel">Steel</button></li>
-                                <li class="nav-item"><button class="btn btn-header fairy" id="fairy">Fairy</button></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="pokedex-bottom-bg-screen">_</div>
-                    <div class="pokedex-bottom-bg-gray">_</div>
-                </div>
-                <div class="pokedex-joystick">
-                    <div class="pokedex-joystick-tracker">
-                        <input id="busqueda-pokemon" class="pokedex-joystick-button" type="submit" value=""></input>
-                    </div>
-                </div>
-            </div>
+              </div>
+              <div class="pokedex-bg-screen"></div>
+              <div class="pokedex-bg-gray"></div>
+            </figure>
+          </div>
         </div>
 
-    </main>
-    <script src="inicio.js"></script>
+        <div class="pokedex-separator"></div>
+
+        <div class="pokedex-bottom-part">
+          <div class="pokedex-pad-background">
+            <div class="pokedex-pad"></div>
+            <div class="pokedex-pad-circle"></div>
+            <div class="flechader"></div>
+            <div class="flechaizq"></div>
+            <div class="flechaarri"></div>
+            <div class="flechaabaj"></div>
+          </div>
+          <div class="pokedex-bottom-screen">
+            <div class="pokemon3">
+              <label for="name-pokemon">Nombre Pokémon</label>
+              <input type="text" id="name-pokemon" class="parpadeando-input" value=". . .">
+
+              <ul class="nav-list">
+                <li class="nav-item"><button class="btn btn-header" id="ver-todos">Ver todos</button>
+                </li>
+                <li class="nav-item"><button class="btn btn-header normal" id="normal">Normal</button>
+                </li>
+                <li class="nav-item"><button class="btn btn-header fire" id="fire">Fire</button></li>
+                <li class="nav-item"><button class="btn btn-header water" id="water">Water</button></li>
+                <li class="nav-item"><button class="btn btn-header grass" id="grass">Grass</button></li>
+                <li class="nav-item"><button class="btn btn-header electric" id="electric">Electric</button>
+                </li>
+                <li class="nav-item"><button class="btn btn-header ice" id="ice">Ice</button></li>
+                <li class="nav-item"><button class="btn btn-header fighting" id="fighting">Fighting</button>
+                </li>
+                <li class="nav-item"><button class="btn btn-header poison" id="poison">Poison</button>
+                </li>
+                <li class="nav-item"><button class="btn btn-header ground" id="ground">Ground</button>
+                </li>
+                <li class="nav-item"><button class="btn btn-header flying" id="flying">Flying</button>
+                </li>
+                <li class="nav-item"><button class="btn btn-header psychic" id="psychic">Psychic</button></li>
+                <li class="nav-item"><button class="btn btn-header bug" id="bug">Bug</button></li>
+                <li class="nav-item"><button class="btn btn-header rock" id="rock">Rock</button></li>
+                <li class="nav-item"><button class="btn btn-header ghost" id="ghost">Ghost</button></li>
+                <li class="nav-item"><button class="btn btn-header dark" id="dark">Dark</button></li>
+                <li class="nav-item"><button class="btn btn-header dragon" id="dragon">Dragon</button>
+                </li>
+                <li class="nav-item"><button class="btn btn-header steel" id="steel">Steel</button></li>
+                <li class="nav-item"><button class="btn btn-header fairy" id="fairy">Fairy</button></li>
+              </ul>
+            </div>
+          </div>
+          <div class="pokedex-bottom-bg-screen">_</div>
+          <div class="pokedex-bottom-bg-gray">_</div>
+        </div>
+        <div class="pokedex-joystick">
+          <div class="pokedex-joystick-tracker">
+            <input id="busqueda-pokemon" class="pokedex-joystick-button" type="submit" value=""></input>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </main>
+  <script src="inicio.js"></script>
 </body>
 
 </html>
