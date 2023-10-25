@@ -26,7 +26,7 @@
               <div class="pokedex-top-screen">
 
 
-                <div class="pantalla-negra">
+                <div class="pantalla-negra oculta">
                 </div>
 
                 <div class="pokemon oculta">
@@ -91,7 +91,7 @@
                   </div>
                 </div>
 
-                <div class="todos-los-pokemones oculta" id="listaPokemon">
+                <div class="todos-los-pokemones" id="listaPokemon">
                   <!-- <div class="card-pokemon">
                                         <div class="card-pokemon-imagen">
                                             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
@@ -130,7 +130,12 @@
           <div class="pokedex-bottom-screen">
             <div class="pokemon3">
               <label for="name-pokemon">Nombre Pokémon</label>
-              <input type="text" id="name-pokemon" class="parpadeando-input" value=". . .">
+              <input type="text" id="name-pokemon" class="parpadeando-input" value=". . ." list="datos">
+              <ul id="resutados">
+                <!-- <option value="Erdinger">Erdinger</option>
+                <option value="Corona">Corona</option> -->
+
+              </ul>
 
               <ul class="nav-list">
                 <li class="nav-item"><button class="btn btn-header" id="ver-todos">Ver todos</button>
@@ -173,6 +178,7 @@
         </div>
       </div>
     </div>
+    <div id="autocompleteResults"></div>
 
 
   </main>

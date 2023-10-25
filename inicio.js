@@ -10,6 +10,7 @@ const botonesBuscador = document.querySelectorAll(".btn-header");
 const botonBusqueda = document.getElementById("busqueda-pokemon");
 const inputPokemon = document.getElementById("name-pokemon");
 const todosLosPokemon = document.querySelector(".todos-los-pokemones");
+const resultados = document.getElementById("resultados");
 
 let haciaAbajo = false;
 let haciaLaIzquierda = false;
@@ -150,4 +151,59 @@ botonBusqueda.addEventListener("click", () => {
     });
 
   input.value = ". . .";
+});
+
+// inputPokemon.addEventListener("keyup", (e) => {
+//   const key = e.target.value;
+//   for (let i = 1; i <= 151; i++) {
+//     fetch(URL + i)
+//       .then((response) => response.json())
+//       .then((data) => {
+//         if (key.length > 2 && key) {
+//           console.log(data.name);
+//         }
+//       });
+//   }
+// });
+
+const autocompleteResults = document.getElementById("autocompleteResults");
+
+// Función para buscar y mostrar resultados en tiempo real.
+async function searchPokemon(letra) {
+  autocompleteResults.innerHTML = ""; // Limpia resultados anteriores.
+  if (letra.length < 2) return; // No hagas la solicitud si no hay entrada.
+
+  for (let i = 1; i <= 151; i++) {
+    try {
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
+      if (!response.ok) {
+        throw new Error("No se encontraron resultados.");
+      }
+      const data = await response.json();
+      const name = data.name;
+      if (name.includes(letra)) {
+        const div = document.createElement("div");
+        div.classList.add("card-pokemon");
+        div.innerHTML = `
+            <div class="card-pokemon-imagen">
+                <img src="${data.sprites.other["official-artwork"].front_default}"
+                    alt="${data.name}">
+                <div class="card-pokemon-info">
+                    <h2 class="card-pokemon-nombre">${data.name}</h2>
+                    <div class="card-pokemon-tipos">hey</div>
+                </div>
+            </div>
+        `;
+        autocompleteResults.appendChild(div);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
+
+// Escucha el evento "input" para buscar a medida que el usuario escribe.
+inputPokemon.addEventListener("input", () => {
+  const query = inputPokemon.value.toLowerCase();
+  searchPokemon(query);
 });
