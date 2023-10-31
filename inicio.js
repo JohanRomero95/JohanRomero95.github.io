@@ -9,6 +9,7 @@ const listaPokemon = document.querySelector("#listaPokemon");
 const botonesBuscador = document.querySelectorAll(".btn-header");
 const botonBusqueda = document.getElementById("busqueda-pokemon");
 const inputPokemon = document.getElementById("name-pokemon");
+const colorOriginal = listaPokemon.style.color;
 
 let haciaAbajo = false;
 let haciaLaIzquierda = false;
@@ -79,6 +80,18 @@ function mostrarPokemon(poke) {
   listaPokemon.appendChild(div);
 }
 
+function colorOriginalError() {
+  listaPokemon.textContent = "Nombre incorrecto o el Pokemon no existe.";
+  listaPokemon.style.color = "var(--amarillo-pikachu)";
+
+  inputPokemon.addEventListener("beforeinput", () => {
+    listaPokemon.style.color = colorOriginal;
+  });
+  botonBusqueda.addEventListener("focusout", () => {
+    listaPokemon.style.color = colorOriginal;
+  });
+}
+
 function cargarPokemonDesdeAPI(url) {
   return fetch(url).then((response) => {
     if (response.ok) {
@@ -105,62 +118,75 @@ function buscarPokemonPorNombre(nombre) {
   cargarPokemonDesdeAPI(URL + nombre)
     .then((data) => mostrarPokemon(data))
     .catch(() => {
-      const colorOriginal = listaPokemon.style.color;
-      listaPokemon.textContent = "Nombre incorrecto o el Pokemon no existe.";
-      listaPokemon.style.color = "var(--amarillo-pikachu)";
-
-      botonBusqueda.addEventListener("reset", () => {
-        listaPokemon.style.color = colorOriginal;
-      });
+      colorOriginalError();
     });
 }
 
+// Busqueda Dinamica
 async function buscarPokemonEnTiempoReal(letra) {
   pantalla.classList.add("oculta");
   listaPokemon.classList.remove("oculta");
   listaPokemon.innerHTML = "";
 
-  if (letra.length === 0) return;
+  if (letra.length === 1) return;
 
-  for (let i = 1; i <= 151; i++) {
-    try {
-      const data = await cargarPokemonDesdeAPI(
-        `https://pokeapi.co/api/v2/pokemon/${i}`
+  try {
+    const endpoint = `https://pokeapi.co/api/v2/pokemon/?limit=151`;
+    const response = await fetch(endpoint);
+    const data = await response.json();
+
+    if (data.results && data.results.length > 0) {
+      const filteredResults = data.results.filter((result) =>
+        result.name.includes(letra)
       );
-      const pokeName = data.name;
 
-      if (pokeName.includes(letra)) {
-        mostrarPokemon(data);
+      if (filteredResults.length > 0) {
+        for (const result of filteredResults) {
+          const pokemonData = await cargarPokemonDesdeAPI(result.url);
+          mostrarPokemon(pokemonData);
+        }
+      } else {
+        colorOriginalError();
       }
-    } catch (error) {
-      console.error(error);
     }
+  } catch (error) {
+    console.error(error);
   }
 }
 
+// Busqueda por Categoria
 botonesBuscador.forEach((boton) => {
-  boton.addEventListener("click", (event) => {
+  boton.addEventListener("click", async (event) => {
     const botonId = event.currentTarget.id;
     pantalla.classList.remove("shutdown");
     pantalla.classList.add("oculta");
     listaPokemon.classList.remove("oculta");
     listaPokemon.innerHTML = "";
 
-    for (let i = 1; i <= 151; i++) {
-      cargarPokemonDesdeAPI(URL + i)
-        .then((data) => {
+    try {
+      // Realiza una solicitud para obtener la lista completa de Pokémon
+      const endpoint = `https://pokeapi.co/api/v2/pokemon?limit=151`;
+      const response = await fetch(endpoint);
+      const data = await response.json();
+
+      if (data.results && data.results.length > 0) {
+        for (const result of data.results) {
+          const pokemonData = await cargarPokemonDesdeAPI(result.url);
+
           if (botonId === "ver-todos") {
-            mostrarPokemon(data);
+            mostrarPokemon(pokemonData);
           } else {
-            const tipos = data.types.map((types) => types.type.name);
+            const tipos = pokemonData.types.map((types) => types.type.name);
             if (tipos.includes(botonId)) {
-              mostrarPokemon(data);
+              mostrarPokemon(pokemonData);
             }
           }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        }
+      } else {
+        console.log("No se encontraron Pokémon.");
+      }
+    } catch (error) {
+      console.error(error);
     }
   });
 });
