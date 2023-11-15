@@ -239,7 +239,7 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=${numeroPokemon}`).then(
 // POKEMON
 async function fetchPokemonDataBeforeRedirect(id) {
   try {
-    const [pokemone, pokemonSpecies] = await Promise.all([
+    const [pokemon, pokemonSpecies] = await Promise.all([
       fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((response) =>
         response.json()
       ),
@@ -247,7 +247,7 @@ async function fetchPokemonDataBeforeRedirect(id) {
         res.json()
       ),
     ]);
-    return true;
+    return { pokemon, pokemonSpecies };
   } catch (error) {
     console.error("Mensaje fallido, desde la fetch");
     return false; // Añadido para indicar que hubo un error
@@ -255,7 +255,7 @@ async function fetchPokemonDataBeforeRedirect(id) {
 }
 
 // FUNCION PARA MOSTRAR TODOS LOS POKEMONES
-function mostrarPokemon(pokemonList) {
+async function mostrarPokemon(pokemonList) {
   listaPokemon.innerHTML = "";
   pokemonList.forEach((poke) => {
     const pokemonName = poke.url.split("/")[6];
@@ -270,25 +270,37 @@ function mostrarPokemon(pokemonList) {
             `;
 
     divPokemon.addEventListener("click", async () => {
-      const exitoso = await fetchPokemonDataBeforeRedirect(poke.id);
-      console.log(poke.url);
+      const exitoso = await fetchPokemonDataBeforeRedirect(poke.name);
+
+      let divTipos = document.querySelector(".pokemon-tipos");
+
       if (exitoso) {
+        const { pokemon, pokemonSpecies } = exitoso;
+        let tipos = "";
+        if (pokemon.types.length === 1) {
+          divTipos.document.createElement("p")
+          tipos = pokemon.types[0].type.name;
+        } else if (pokemon.types.length === 2) {
+          tipos = `${pokemon.types[0].type.name} / ${pokemon.types[1].type.name}`;
+        }
+        console.log(tipos); // Aquí tendrás los tipos del Pokémon
+
         const pokemonDetalles = document.querySelector(".pokemon");
         if (pokemonDetalles) {
           listaPokemon.classList.add("oculta");
           pantalla.classList.add("oculta");
           pokemonDetalles.classList.remove("oculta");
           pokemonDetalles.innerHTML = `<div class="pokemon-imagen">
-                    <p class="pokemon-id-back">#025</p>
+                    <p class="pokemon-id-back">#${pokemon.id}</p>
                     <div class="info-pokemon">
-                      <h2 class="pokemon-nombre">${poke.name}</h2>
+                      <h2 class="pokemon-nombre">${pokemon.name}</h2>
                     </div>
                     <img
-                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonName}.png"
                       alt="Pikachu">
                     <div class="pokemon-tipos">
-                      <p class="electric tipo">ELECTRIC</p>
-                      <p class="fighting tipo">FIGHTING</p>
+                      <p class="ELECTRIC tipo">ELECTRIC</p>
+                      <p class="ELECTRIC tipo">ELECTRIC</p>
                     </div>
                   </div>
                   <div class="pokemon-info">
@@ -297,11 +309,11 @@ function mostrarPokemon(pokemonList) {
                     <div class="pokemon-stats">
                       <div class="modif-stat">
                         <p class="stat-text">Tamaño</p>
-                        <p class="stat">123m</p>
+                        <p class="stat">${pokemon.height}m</p>
                       </div>
                       <div class="modif-stat">
                         <p class="stat-text">Peso</p>
-                        <p class="stat">${poke.weight}kg</p>
+                        <p class="stat">${pokemon.weight}kg</p>
                       </div>
                     </div>
                     <div class="stats-pokemon">
