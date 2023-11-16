@@ -294,29 +294,49 @@ main {
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
+  position: relative;
 }
 
 .stats-pokemon {
   padding-block: 0.5em;
-  height: 170px;
   display: flex;
   font-size: 0.4em;
-  font-weight: bold;
-  width: 120%;
+  /* font-weight: bold; */
+  /* Modifica el ancho del contenedor padre si es necesario */
+  width: 110%;
+  /* Elimina el ancho y la altura fijos */
+  height: 155px;
+  background-color: green;
 }
 
 .progress-bar {
+  position: relative;
   height: 100%;
   width: 13px;
   background-color: red;
+  max-width: 100%;
 }
 
 .stat-group {
+  background-color: purple;
+
+  top: 40px;
   width: 100%;
-  gap: 1.2em;
+  /* gap: 0.4em; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-content: center;
+  height: 135px;
+  /* Asegura que el contenedor tenga un alto definido */
+  /* Asegura que no haya desbordamiento y se ajuste el contenido */
+  overflow: hidden;
+}
+
+.counter-stat {
+  position: absolute;
+  display: flex;
+  bottom: 8px;
 }
 
 .nombre-contenedor {

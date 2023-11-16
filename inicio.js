@@ -5,16 +5,18 @@ const input = document.querySelector(".parpadeando-input");
 const pokedexBackground = document.querySelector(".pokedex-pad-background");
 const pantalla = document.querySelector(".pantalla-negra");
 const URL = "https://pokeapi.co/api/v2/pokemon/";
-// donde aparecen nuestros pokemon
 const listaPokemon = document.querySelector("#listaPokemon");
 const botonesBuscador = document.querySelectorAll(".btn-header");
 const botonBusqueda = document.getElementById("busqueda-pokemon");
-// Input para buscar pokemon
 const inputPokemon = document.getElementById("name-pokemon");
 const colorOriginal = listaPokemon.style.color;
-// numero que queremos que salgan de pokemon
 const numeroPokemon = 151;
 const notFoundMessage = document.querySelector("#not-found-message");
+
+const progressValue = 75;
+
+const progressBar = document.querySelectorAll(".progress-bar");
+// progressBar.style.height = `${progressValue}`;
 
 let todosLosPokemones = [];
 let haciaAbajo = false;
@@ -235,7 +237,7 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=${numeroPokemon}`).then(
     })
 );
 
-// FUNCION QUE SE USA PARA QUE SE SINCRONICE LA API CUANDO SE LE DE CLICK A
+// FUNCION QUE SE USA PARA QUE SE SINCRONICE LA API CUANDO SE LE DE CLICK AL
 // POKEMON
 async function fetchPokemonDataBeforeRedirect(id) {
   try {
@@ -272,23 +274,16 @@ async function mostrarPokemon(pokemonList) {
     divPokemon.addEventListener("click", async () => {
       const exitoso = await fetchPokemonDataBeforeRedirect(poke.name);
 
-      let divTipos = document.querySelector(".pokemon-tipos");
-
       if (exitoso) {
-        const { pokemon, pokemonSpecies } = exitoso;
         let tipos = "";
-        if (pokemon.types.length === 1) {
-          divTipos.document.createElement("p")
-          tipos = pokemon.types[0].type.name;
-        } else if (pokemon.types.length === 2) {
-          tipos = `${pokemon.types[0].type.name} / ${pokemon.types[1].type.name}`;
-        }
-        console.log(tipos); // Aquí tendrás los tipos del Pokémon
-
+        const { pokemon, pokemonSpecies } = exitoso;
+        const pTipo = document.createElement("p");
         const pokemonDetalles = document.querySelector(".pokemon");
+        pTipo.classList.add("tipo");
+
         if (pokemonDetalles) {
-          listaPokemon.classList.add("oculta");
           pantalla.classList.add("oculta");
+          listaPokemon.classList.add("oculta");
           pokemonDetalles.classList.remove("oculta");
           pokemonDetalles.innerHTML = `<div class="pokemon-imagen">
                     <p class="pokemon-id-back">#${pokemon.id}</p>
@@ -296,13 +291,19 @@ async function mostrarPokemon(pokemonList) {
                       <h2 class="pokemon-nombre">${pokemon.name}</h2>
                     </div>
                     <img
-                      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonName}.png"
-                      alt="Pikachu">
-                    <div class="pokemon-tipos">
-                      <p class="ELECTRIC tipo">ELECTRIC</p>
-                      <p class="ELECTRIC tipo">ELECTRIC</p>
-                    </div>
-                  </div>
+                  src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonName}.png"
+                  alt="${pokemon.name}">
+                <div class="pokemon-tipos">
+                  <p class="${pokemon.types[0].type.name} tipo">${
+                    pokemon.types[0].type.name
+                  }</p>
+                  ${
+                    pokemon.types.length === 2
+                      ? `<p class="${pokemon.types[1].type.name} tipo">${pokemon.types[1].type.name}</p>`
+                      : ""
+                  }
+                </div>
+              </div>
                   <div class="pokemon-info">
                     <div class="nombre-contenedor">
                     </div>
@@ -320,36 +321,57 @@ async function mostrarPokemon(pokemonList) {
                       <div class="stat-group">
                         <span>HP</span>
                         <div class="progress-bar"></div>
-                        <span class="counter-stat">45</span>
+                        <span class="counter-stat">${
+                          pokemon.stats[0].base_stat
+                        }</span>
                       </div>
                       <div class="stat-group">
                         <span>Atk</span>
                         <div class="progress-bar"></div>
-                        <span class="counter-stat">18</span>
+                        <span class="counter-stat">${
+                          pokemon.stats[1].base_stat
+                        }</span>
                       </div>
                       <div class="stat-group">
                         <span>Dfs</span>
                         <div class="progress-bar"></div>
-                        <span class="counter-stat">36</span>
+                        <span class="counter-stat">${
+                          pokemon.stats[2].base_stat
+                        }</span>
                       </div>
                       <div class="stat-group">
                         <span>S.Atk</span>
                         <div class="progress-bar"></div>
-                        <span class="counter-stat">45</span>
+                        <span class="counter-stat">${
+                          pokemon.stats[3].base_stat
+                        }</span>
                       </div>
                       <div class="stat-group">
                         <span>S.D</span>
                         <div class="progress-bar"></div>
-                        <span class="counter-stat">90</span>
+                        <span class="counter-stat">${
+                          pokemon.stats[4].base_stat
+                        }</span>
                       </div>
                       <div class="stat-group">
                         <span>Speed</span>
                         <div class="progress-bar"></div>
-                        <span class="counter-stat">60</span>
+                        <span class="counter-stat">${
+                          pokemon.stats[5].base_stat
+                        }</span>
                       </div>
                     </div>
                   </div>`;
+
+          const progressBarList =
+            pokemonDetalles.querySelectorAll(".progress-bar");
+          progressBarList.forEach((progressBar, index) => {
+            const progressValue = pokemon.stats[index].base_stat;
+            const height = 120 - progressValue;
+            progressBar.style.top = `${height}%`;
+          });
         }
+        pTipo.textContent = tipos;
       }
     });
     listaPokemon.appendChild(divPokemon);
