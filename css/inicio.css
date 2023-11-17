@@ -197,6 +197,10 @@ main {
   justify-content: space-around;
 }
 
+.card-pokemon-info p {
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+}
+
 .card-pokemon-tipos {
   width: 100%;
   height: 60%;
@@ -236,7 +240,7 @@ main {
   -webkit-border-radius: 0.4rem;
 }
 
-.pokemon3 {
+.pokemonContainer {
   border-radius: 0.4rem;
   width: 100%;
   height: 100%;
@@ -302,34 +306,27 @@ main {
   display: flex;
   font-size: 0.4em;
   /* font-weight: bold; */
-  /* Modifica el ancho del contenedor padre si es necesario */
-  width: 110%;
-  /* Elimina el ancho y la altura fijos */
-  height: 155px;
-  background-color: green;
+  width: 120%;
+  height: auto;
 }
 
 .progress-bar {
   position: relative;
   height: 100%;
   width: 13px;
+  border: 1px black solid;
   background-color: red;
   max-width: 100%;
+  min-height: 5px;
 }
 
 .stat-group {
-  background-color: purple;
-
-  top: 40px;
   width: 100%;
-  /* gap: 0.4em; */
+  gap: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-content: center;
   height: 135px;
-  /* Asegura que el contenedor tenga un alto definido */
-  /* Asegura que no haya desbordamiento y se ajuste el contenido */
   overflow: hidden;
 }
 

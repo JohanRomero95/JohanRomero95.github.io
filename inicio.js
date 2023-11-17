@@ -12,6 +12,7 @@ const inputPokemon = document.getElementById("name-pokemon");
 const colorOriginal = listaPokemon.style.color;
 const numeroPokemon = 151;
 const notFoundMessage = document.querySelector("#not-found-message");
+const pokemonContainer = document.getElementById("pokemonContainer");
 
 const progressValue = 75;
 
@@ -259,14 +260,24 @@ async function fetchPokemonDataBeforeRedirect(id) {
 // FUNCION PARA MOSTRAR TODOS LOS POKEMONES
 async function mostrarPokemon(pokemonList) {
   listaPokemon.innerHTML = "";
-  pokemonList.forEach((poke) => {
+  pokemonList.forEach(async (poke) => {
     const pokemonName = poke.url.split("/")[6];
+    const { pokemon } = await fetchPokemonDataBeforeRedirect(poke.name);
     const divPokemon = document.createElement("div");
     divPokemon.classList.add("card-pokemon");
     divPokemon.innerHTML = `<div class="card-pokemon-imagen">
     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonName}.png" alt="${pokemonName}"/>
         <div class="card-pokemon-info">
         <h2 class="card-pokemon-nombre">${poke.name}</h2>
+                     <div class="pokemon-tipos"></div>
+                     <p class="${pokemon.types[0].type.name} tipo">${
+                       pokemon.types[0].type.name
+                     }</p>
+                  ${
+                    pokemon.types.length === 2
+                      ? `<p class="${pokemon.types[1].type.name} tipo">${pokemon.types[1].type.name}</p>`
+                      : ""
+                  }
          </div>
         </div>
             `;
@@ -276,7 +287,7 @@ async function mostrarPokemon(pokemonList) {
 
       if (exitoso) {
         let tipos = "";
-        const { pokemon, pokemonSpecies } = exitoso;
+        const { pokemon } = exitoso;
         const pTipo = document.createElement("p");
         const pokemonDetalles = document.querySelector(".pokemon");
         pTipo.classList.add("tipo");
@@ -340,14 +351,14 @@ async function mostrarPokemon(pokemonList) {
                         }</span>
                       </div>
                       <div class="stat-group">
-                        <span>S.Atk</span>
+                        <span>Sp.A</span>
                         <div class="progress-bar"></div>
                         <span class="counter-stat">${
                           pokemon.stats[3].base_stat
                         }</span>
                       </div>
                       <div class="stat-group">
-                        <span>S.D</span>
+                        <span>Sp.D</span>
                         <div class="progress-bar"></div>
                         <span class="counter-stat">${
                           pokemon.stats[4].base_stat
@@ -365,9 +376,13 @@ async function mostrarPokemon(pokemonList) {
 
           const progressBarList =
             pokemonDetalles.querySelectorAll(".progress-bar");
+
           progressBarList.forEach((progressBar, index) => {
             const progressValue = pokemon.stats[index].base_stat;
-            const height = 120 - progressValue;
+            let height = 100 - progressValue;
+            if (progressValue > 100) {
+              height = 0;
+            }
             progressBar.style.top = `${height}%`;
           });
         }
@@ -415,3 +430,59 @@ function manejarBusqueda() {
     listaPokemon.style.color = colorOriginal;
   }
 }
+
+async function fetchPokemonByType(type) {
+  try {
+    const response = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+    const { pokemon } = await response.json();
+    const pokemonList = pokemon.map((entry) => entry.pokemon);
+    return pokemonList;
+  } catch (error) {
+    console.error("Error al buscar por tipo de Pokémon");
+    return []; // Retornar una lista vacía en caso de error
+  }
+}
+
+const typeButtons = document.querySelectorAll(".btn-header");
+
+// typeButtons.forEach((button) => {
+// button.addEventListener("click", async (event) => {
+//   const type = event.target.id;
+//   const pokemonList = await fetchPokemonByType(type);
+
+//   // Limpiamos la lista actual de Pokémon
+//   listaPokemon.innerHTML = "";
+
+//   // Mostramos los Pokémon obtenidos en la lista
+//   pokemonList.forEach(async (pokemon) => {
+//     const { pokemon: individualPokemon } = await fetchPokemonDataBeforeRedirect(
+//       pokemon.url.split("/").slice(-2, -1)[0]
+//     );
+
+//     const divPokemon = document.createElement("div");
+//     divPokemon.classList.add("card-pokemon");
+//     divPokemon.innerHTML = `
+//         <div class="card-pokemon-imagen">
+//           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
+//             individualPokemon.id
+//           }.png" alt="${individualPokemon.name}"/>
+//           <div class="card-pokemon-info">
+//             <h2 class="card-pokemon-nombre">${individualPokemon.name}</h2>
+//             <div class="pokemon-tipos"></div>
+//                      <p class="${individualPokemon.types[0].type.name} tipo">${
+//                        individualPokemon.types[0].type.name
+//                      }</p>
+//                   ${
+//                     individualPokemon.types.length === 2
+//                       ? `<p class="${individualPokemon.types[1].type.name} tipo">${individualPokemon.types[1].type.name}</p>`
+//                       : ""
+//                   }
+//          </div>
+//           </div>
+//         </div>
+//       `;
+
+//     listaPokemon.appendChild(divPokemon);
+//   });
+// });
+// });
