@@ -95,7 +95,8 @@ header {
   gap: 0.1rem;
 }
 
-.btn-header {
+.btn-header,
+.btn {
   background-color: var(--clr-gray);
   padding: 0.4rem;
   border-radius: 9px;

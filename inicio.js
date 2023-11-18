@@ -1,75 +1,27 @@
+const numeroPokemon = 153;
+const URL = "https://pokeapi.co/api/v2/pokemon/";
 const boton = document.querySelector("#btnOpen");
 const pokedex = document.querySelector(".pokedex");
-const divPokedexPadre = document.querySelector(".pokedex-padre");
+const verTodos = document.querySelector("#ver-todos");
+const pokemonDetalles = document.querySelector(".pokemon");
 const input = document.querySelector(".parpadeando-input");
-const pokedexBackground = document.querySelector(".pokedex-pad-background");
-const pantalla = document.querySelector(".pantalla-negra");
-const URL = "https://pokeapi.co/api/v2/pokemon/";
+const typeButtons = document.querySelectorAll(".btn-header");
 const listaPokemon = document.querySelector("#listaPokemon");
-const botonesBuscador = document.querySelectorAll(".btn-header");
-const botonBusqueda = document.getElementById("busqueda-pokemon");
 const inputPokemon = document.getElementById("name-pokemon");
 const colorOriginal = listaPokemon.style.color;
-const numeroPokemon = 151;
+const divPokedexPadre = document.querySelector(".pokedex-padre");
+const botonesBuscador = document.querySelectorAll(".btn-header");
+const botonBusqueda = document.getElementById("busqueda-pokemon");
 const notFoundMessage = document.querySelector("#not-found-message");
 const pokemonContainer = document.getElementById("pokemonContainer");
-const pokemonDetalles = document.querySelector(".pokemon");
+const pokedexBackground = document.querySelector(".pokedex-pad-background");
+const pantalla = document.querySelector(".pantalla-negra");
 
-const progressValue = 75;
-
-const progressBar = document.querySelectorAll(".progress-bar");
-// progressBar.style.height = `${progressValue}`;
-
+let isOn = false;
+let encendido = false;
 let todosLosPokemones = [];
 let haciaAbajo = false;
 let haciaLaIzquierda = false;
-let encendido = false;
-let isOn = false;
-
-boton.addEventListener("click", () => {
-  pokedex.classList.toggle("closed");
-  isOn = !isOn;
-
-  // Desplazamiento del pokedex
-  const transformValue =
-    haciaAbajo && haciaLaIzquierda
-      ? "translateY(0)"
-      : `translate(${-45}px, ${180}px)`;
-  divPokedexPadre.style.transform = transformValue;
-  haciaAbajo = !haciaAbajo;
-  haciaLaIzquierda = !haciaLaIzquierda;
-
-  // Encender/apagar luz verde
-  encendido = !encendido;
-  pokedexBackground.classList.toggle("on", encendido);
-
-  // Animación de encendido intro
-  if (isOn) {
-    pantalla.classList.add("shutdown");
-    const contenido = "Bienvenido";
-    let i = 0;
-
-    const animateText = () => {
-      if (i <= contenido.length) {
-        agregarLetra();
-        i++;
-        setTimeout(animateText, 235);
-      }
-    };
-
-    const agregarLetra = () => {
-      pantalla.textContent = contenido.slice(0, i);
-    };
-
-    setTimeout(animateText, 1200);
-  } else {
-    pantalla.classList.remove("shutdown");
-    setTimeout(() => {
-      pantalla.classList.remove("oculta");
-    }, 300);
-    listaPokemon.classList.add("oculta");
-  }
-});
 
 // MI PRIMER CODIGO
 // function mostrarPokemon(poke) {
@@ -220,17 +172,10 @@ boton.addEventListener("click", () => {
 //   buscarPokemonEnTiempoReal(query);
 // });
 
-// Parpadeo del input
-input.addEventListener("focus", () => {
-  input.style.animation = "none";
-});
-
-input.addEventListener("blur", () => {
-  input.style.animation = "parpadeo 1s infinite";
-});
+/*--------------------------------------------------------------------------------------*/
 
 // MI SEGUNDO CODIGO
-
+//  FETCH PARA MOSTRAR TODOS LOS POKEMONES
 fetch(`https://pokeapi.co/api/v2/pokemon?limit=${numeroPokemon}`).then(
   (respuesta) =>
     respuesta.json().then((data) => {
@@ -239,8 +184,7 @@ fetch(`https://pokeapi.co/api/v2/pokemon?limit=${numeroPokemon}`).then(
     })
 );
 
-// FUNCION QUE SE USA PARA QUE SE SINCRONICE LA API CUANDO SE LE DE CLICK AL
-// POKEMON
+// FUNCION PARA QUE SE SINCRONICE LA API CUANDO SE LE DE CLICK AL POKEMON
 async function fetchPokemonDataBeforeRedirect(id) {
   try {
     const [pokemon, pokemonSpecies] = await Promise.all([
@@ -253,12 +197,12 @@ async function fetchPokemonDataBeforeRedirect(id) {
     ]);
     return { pokemon, pokemonSpecies };
   } catch (error) {
-    console.error("Mensaje fallido, desde la fetch");
-    return false; // Añadido para indicar que hubo un error
+    console.error("Error desde fetchPokemonDataBeforeRedirect ");
+    return false;
   }
 }
 
-// FUNCION PARA MOSTRAR TODOS LOS POKEMONES
+// FUNCION PARA VER TODOS LOS POKEMONES Y AL HACER CLICK NOS LLEVE AL DETALLE DEL POKEMON
 async function mostrarPokemon(pokemonList) {
   listaPokemon.innerHTML = "";
   pokemonList.forEach(async (poke) => {
@@ -283,6 +227,7 @@ async function mostrarPokemon(pokemonList) {
         </div>
             `;
 
+    // AQUI NOS DIRIGE AL DETALLE
     divPokemon.addEventListener("click", async () => {
       const exitoso = await fetchPokemonDataBeforeRedirect(poke.name);
 
@@ -377,6 +322,7 @@ async function mostrarPokemon(pokemonList) {
           const progressBarList =
             pokemonDetalles.querySelectorAll(".progress-bar");
 
+          // BARRAS DE ESTADISTICAS
           progressBarList.forEach((progressBar, index) => {
             const progressValue = pokemon.stats[index].base_stat;
             let height = 100 - progressValue;
@@ -392,20 +338,6 @@ async function mostrarPokemon(pokemonList) {
     listaPokemon.appendChild(divPokemon);
   });
 }
-
-inputPokemon.addEventListener("click", () => {
-  pantalla.classList.add("oculta");
-  listaPokemon.classList.remove("oculta");
-});
-
-input.addEventListener("click", () => {
-  const pokemonDetalles = document.querySelector(".pokemon");
-
-  pokemonDetalles.classList.add("oculta");
-  listaPokemon.classList.remove("oculta");
-});
-
-inputPokemon.addEventListener("keyup", manejarBusqueda);
 
 // FUNCION PARA BUSQUEDA DINAMICA
 function manejarBusqueda() {
@@ -439,71 +371,238 @@ async function fetchPokemonByType(type) {
     return pokemonList;
   } catch (error) {
     console.error("Error al buscar por tipo de Pokémon");
-    return []; // Retornar una lista vacía en caso de error
+    return [];
   }
 }
 
-const typeButtons = document.querySelectorAll(".btn-header");
-
-// Función para mostrar los detalles de un Pokémon
+// FUNCION PARA MOSTRAR LOS DETALLES DE UN POKEMON
 async function mostrarDetallesPokemon(nombrePokemon) {
   const { pokemon } = await fetchPokemonDataBeforeRedirect(nombrePokemon);
 
-  // Aquí muestras los detalles del Pokémon
-  console.log(pokemon);
-  // Puedes mostrar los detalles del Pokémon en otro lugar o en un modal, similar a lo que hacías antes
+  pantalla.classList.add("oculta");
+  listaPokemon.classList.add("oculta");
+
+  if (pokemonDetalles) {
+    pokemonDetalles.classList.remove("oculta");
+    pokemonDetalles.innerHTML = `
+      <div class="pokemon-imagen">
+        <p class="pokemon-id-back">#${pokemon.id}</p>
+        <div class="info-pokemon">
+          <h2 class="pokemon-nombre">${pokemon.name}</h2>
+        </div>
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
+          pokemon.id
+        }.png" alt="${pokemon.name}">
+        <div class="pokemon-tipos">
+          <p class="${pokemon.types[0].type.name} tipo">${
+            pokemon.types[0].type.name
+          }</p>
+          ${
+            pokemon.types.length === 2
+              ? `<p class="${pokemon.types[1].type.name} tipo">${pokemon.types[1].type.name}</p>`
+              : ""
+          }
+        </div>
+      </div>
+      <div class="pokemon-info">
+        <div class="nombre-contenedor"></div>
+        <div class="pokemon-stats">
+          <div class="modif-stat">
+            <p class="stat-text">Tamaño</p>
+            <p class="stat">${pokemon.height}m</p>
+          </div>
+          <div class="modif-stat">
+            <p class="stat-text">Peso</p>
+            <p class="stat">${pokemon.weight}kg</p>
+          </div>
+        </div>
+        <div class="stats-pokemon">
+                      <div class="stat-group">
+                        <span>HP</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">${
+                          pokemon.stats[0].base_stat
+                        }</span>
+                      </div>
+                      <div class="stat-group">
+                        <span>Atk</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">${
+                          pokemon.stats[1].base_stat
+                        }</span>
+                      </div>
+                      <div class="stat-group">
+                        <span>Dfs</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">${
+                          pokemon.stats[2].base_stat
+                        }</span>
+                      </div>
+                      <div class="stat-group">
+                        <span>Sp.A</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">${
+                          pokemon.stats[3].base_stat
+                        }</span>
+                      </div>
+                      <div class="stat-group">
+                        <span>Sp.D</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">${
+                          pokemon.stats[4].base_stat
+                        }</span>
+                      </div>
+                      <div class="stat-group">
+                        <span>Speed</span>
+                        <div class="progress-bar"></div>
+                        <span class="counter-stat">${
+                          pokemon.stats[5].base_stat
+                        }</span>
+                      </div>
+                    </div>
+                  </div>`;
+
+    const progressBarList = pokemonDetalles.querySelectorAll(".progress-bar");
+
+    progressBarList.forEach((progressBar, index) => {
+      const progressValue = pokemon.stats[index].base_stat;
+      let height = 100 - progressValue;
+      if (progressValue > 100) {
+        height = 0;
+      }
+      progressBar.style.top = `${height}%`;
+    });
+
+    console.log(pokemon);
+  } else {
+    console.error(
+      "No se pudo encontrar el contenedor para mostrar los detalles del Pokémon."
+    );
+  }
 }
 
-// Función para mostrar los Pokémon de acuerdo al tipo
+// FUNCION PARA MOSTRAR POKEMON POR TIPO
 typeButtons.forEach((button) => {
   button.addEventListener("click", async (event) => {
-    const type = event.target.id;
+    const type = event.currentTarget.id;
     const pokemonList = await fetchPokemonByType(type);
-    const cantidadDePokemones = 20; // Aquí define la cantidad que deseas mostrar
+    const cantidadDePokemones = 21;
 
     listaPokemon.innerHTML = "";
+    pantalla.classList.add("oculta");
+    pokemonDetalles.classList.add("oculta");
+    listaPokemon.classList.remove("oculta");
 
-    // Mostramos la cantidad deseada de Pokémon en la lista
     for (let i = 0; i < cantidadDePokemones && i < pokemonList.length; i++) {
       const pokemon = pokemonList[i];
-      const { pokemon: individualPokemon } =
-        await fetchPokemonDataBeforeRedirect(
-          pokemon.url.split("/").slice(-2, -1)[0]
-        );
+      const { pokemon: detallePokemon } = await fetchPokemonDataBeforeRedirect(
+        pokemon.url.split("/").slice(-2, -1)[0]
+      );
 
       const divPokemon = document.createElement("div");
       divPokemon.classList.add("card-pokemon");
       divPokemon.innerHTML = `
         <div class="card-pokemon-imagen">
           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
-            individualPokemon.id
-          }.png" alt="${individualPokemon.name}"/>
+            detallePokemon.id
+          }.png" alt="${detallePokemon.name}"/>
           <div class="card-pokemon-info">
-            <h2 class="card-pokemon-nombre">${individualPokemon.name}</h2>
+            <h2 class="card-pokemon-nombre">${detallePokemon.name}</h2>
             <div class="pokemon-tipos"></div>
-            <p class="${individualPokemon.types[0].type.name} tipo">${
-              individualPokemon.types[0].type.name
+            <p class="${detallePokemon.types[0].type.name} tipo">${
+              detallePokemon.types[0].type.name
             }</p>
             ${
-              individualPokemon.types.length === 2
-                ? `<p class="${individualPokemon.types[1].type.name} tipo">${individualPokemon.types[1].type.name}</p>`
+              detallePokemon.types.length === 2
+                ? `<p class="${detallePokemon.types[1].type.name} tipo">${detallePokemon.types[1].type.name}</p>`
                 : ""
             }
           </div>
         </div>
       `;
 
-      // Agregar evento de clic para mostrar detalles
       divPokemon.addEventListener("click", async () => {
-        const pokemonDetalles = document.querySelector(".pokemon");
         pokemonDetalles.classList.remove("oculta");
         listaPokemon.classList.add("oculta");
 
-        await mostrarDetallesPokemon(individualPokemon.name);
+        await mostrarDetallesPokemon(detallePokemon.name);
       });
 
       listaPokemon.appendChild(divPokemon);
     }
-    // mostrarDetallesPokemon();
   });
 });
+
+verTodos.addEventListener("click", () => {
+  listaPokemon.innerHTML = "";
+  pantalla.classList.add("oculta");
+  pokemonDetalles.classList.add("oculta");
+  listaPokemon.classList.remove("oculta");
+
+  mostrarPokemon(todosLosPokemones);
+});
+
+boton.addEventListener("click", () => {
+  pokedex.classList.toggle("closed");
+  isOn = !isOn;
+
+  // Desplazamiento del pokedex
+  const transformValue =
+    haciaAbajo && haciaLaIzquierda
+      ? "translateY(0)"
+      : `translate(${-45}px, ${180}px)`;
+  divPokedexPadre.style.transform = transformValue;
+  haciaAbajo = !haciaAbajo;
+  haciaLaIzquierda = !haciaLaIzquierda;
+
+  // Encender/apagar luz verde
+  encendido = !encendido;
+  pokedexBackground.classList.toggle("on", encendido);
+
+  // Animación de encendido intro
+  if (isOn) {
+    pantalla.classList.add("shutdown");
+    const contenido = "Bienvenido";
+    let i = 0;
+
+    const animateText = () => {
+      if (i <= contenido.length) {
+        agregarLetra();
+        i++;
+        setTimeout(animateText, 235);
+      }
+    };
+
+    const agregarLetra = () => {
+      pantalla.textContent = contenido.slice(0, i);
+    };
+
+    setTimeout(animateText, 1200);
+  } else {
+    pantalla.classList.remove("shutdown");
+    setTimeout(() => {
+      pantalla.classList.remove("oculta");
+    }, 300);
+    listaPokemon.classList.add("oculta");
+  }
+});
+
+input.addEventListener("focus", () => {
+  input.style.animation = "none";
+});
+
+input.addEventListener("blur", () => {
+  input.style.animation = "parpadeo 1s infinite";
+});
+
+input.addEventListener("click", () => {
+  pokemonDetalles.classList.add("oculta");
+  listaPokemon.classList.remove("oculta");
+});
+
+inputPokemon.addEventListener("click", () => {
+  pantalla.classList.add("oculta");
+  listaPokemon.classList.remove("oculta");
+});
+
+inputPokemon.addEventListener("keyup", manejarBusqueda);
