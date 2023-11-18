@@ -13,6 +13,7 @@ const colorOriginal = listaPokemon.style.color;
 const numeroPokemon = 151;
 const notFoundMessage = document.querySelector("#not-found-message");
 const pokemonContainer = document.getElementById("pokemonContainer");
+const pokemonDetalles = document.querySelector(".pokemon");
 
 const progressValue = 75;
 
@@ -289,7 +290,6 @@ async function mostrarPokemon(pokemonList) {
         let tipos = "";
         const { pokemon } = exitoso;
         const pTipo = document.createElement("p");
-        const pokemonDetalles = document.querySelector(".pokemon");
         pTipo.classList.add("tipo");
 
         if (pokemonDetalles) {
@@ -445,44 +445,65 @@ async function fetchPokemonByType(type) {
 
 const typeButtons = document.querySelectorAll(".btn-header");
 
-// typeButtons.forEach((button) => {
-// button.addEventListener("click", async (event) => {
-//   const type = event.target.id;
-//   const pokemonList = await fetchPokemonByType(type);
+// Función para mostrar los detalles de un Pokémon
+async function mostrarDetallesPokemon(nombrePokemon) {
+  const { pokemon } = await fetchPokemonDataBeforeRedirect(nombrePokemon);
 
-//   // Limpiamos la lista actual de Pokémon
-//   listaPokemon.innerHTML = "";
+  // Aquí muestras los detalles del Pokémon
+  console.log(pokemon);
+  // Puedes mostrar los detalles del Pokémon en otro lugar o en un modal, similar a lo que hacías antes
+}
 
-//   // Mostramos los Pokémon obtenidos en la lista
-//   pokemonList.forEach(async (pokemon) => {
-//     const { pokemon: individualPokemon } = await fetchPokemonDataBeforeRedirect(
-//       pokemon.url.split("/").slice(-2, -1)[0]
-//     );
+// Función para mostrar los Pokémon de acuerdo al tipo
+typeButtons.forEach((button) => {
+  button.addEventListener("click", async (event) => {
+    const type = event.target.id;
+    const pokemonList = await fetchPokemonByType(type);
+    const cantidadDePokemones = 20; // Aquí define la cantidad que deseas mostrar
 
-//     const divPokemon = document.createElement("div");
-//     divPokemon.classList.add("card-pokemon");
-//     divPokemon.innerHTML = `
-//         <div class="card-pokemon-imagen">
-//           <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
-//             individualPokemon.id
-//           }.png" alt="${individualPokemon.name}"/>
-//           <div class="card-pokemon-info">
-//             <h2 class="card-pokemon-nombre">${individualPokemon.name}</h2>
-//             <div class="pokemon-tipos"></div>
-//                      <p class="${individualPokemon.types[0].type.name} tipo">${
-//                        individualPokemon.types[0].type.name
-//                      }</p>
-//                   ${
-//                     individualPokemon.types.length === 2
-//                       ? `<p class="${individualPokemon.types[1].type.name} tipo">${individualPokemon.types[1].type.name}</p>`
-//                       : ""
-//                   }
-//          </div>
-//           </div>
-//         </div>
-//       `;
+    listaPokemon.innerHTML = "";
 
-//     listaPokemon.appendChild(divPokemon);
-//   });
-// });
-// });
+    // Mostramos la cantidad deseada de Pokémon en la lista
+    for (let i = 0; i < cantidadDePokemones && i < pokemonList.length; i++) {
+      const pokemon = pokemonList[i];
+      const { pokemon: individualPokemon } =
+        await fetchPokemonDataBeforeRedirect(
+          pokemon.url.split("/").slice(-2, -1)[0]
+        );
+
+      const divPokemon = document.createElement("div");
+      divPokemon.classList.add("card-pokemon");
+      divPokemon.innerHTML = `
+        <div class="card-pokemon-imagen">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
+            individualPokemon.id
+          }.png" alt="${individualPokemon.name}"/>
+          <div class="card-pokemon-info">
+            <h2 class="card-pokemon-nombre">${individualPokemon.name}</h2>
+            <div class="pokemon-tipos"></div>
+            <p class="${individualPokemon.types[0].type.name} tipo">${
+              individualPokemon.types[0].type.name
+            }</p>
+            ${
+              individualPokemon.types.length === 2
+                ? `<p class="${individualPokemon.types[1].type.name} tipo">${individualPokemon.types[1].type.name}</p>`
+                : ""
+            }
+          </div>
+        </div>
+      `;
+
+      // Agregar evento de clic para mostrar detalles
+      divPokemon.addEventListener("click", async () => {
+        const pokemonDetalles = document.querySelector(".pokemon");
+        pokemonDetalles.classList.remove("oculta");
+        listaPokemon.classList.add("oculta");
+
+        await mostrarDetallesPokemon(individualPokemon.name);
+      });
+
+      listaPokemon.appendChild(divPokemon);
+    }
+    // mostrarDetallesPokemon();
+  });
+});
