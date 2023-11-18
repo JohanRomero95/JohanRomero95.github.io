@@ -248,7 +248,7 @@ input {
 /* Estilo para el input válido */
 input:valid {
   border-bottom: 2px solid var(--color-verde); /* Borde inferior verde */
-}
+/*  */
 
 /* Estilo para el input inválido */
 input:invalid {
@@ -261,4 +261,10 @@ input:invalid {
 input:invalid + .error-message {
   display: block; /* Muestra el mensaje de error cuando el input es inválido */
   color: var(--color-rojo); /* Color del mensaje de error */
+}
+
+@media (min-width: 320px) {
+  .toast {
+    top: 16.5%;
+  }
 }

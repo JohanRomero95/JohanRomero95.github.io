@@ -266,4 +266,3 @@ input:invalid + .error-message {
   color: var(--color-rojo); /* Color del mensaje de error */
 }
 
-/* ARRIBA IMPORTANTE */
