@@ -9,6 +9,8 @@ const typeButtons = document.querySelectorAll(".btn-header");
 const listaPokemon = document.querySelector("#listaPokemon");
 const inputPokemon = document.getElementById("name-pokemon");
 const colorOriginal = listaPokemon.style.color;
+const anteriorPokemonBtn = document.querySelector(".flechaizq");
+const siguientePokemonBtn = document.querySelector(".flechader");
 const divPokedexPadre = document.querySelector(".pokedex-padre");
 const botonesBuscador = document.querySelectorAll(".btn-header");
 const botonBusqueda = document.getElementById("busqueda-pokemon");
@@ -18,6 +20,7 @@ const pokedexBackground = document.querySelector(".pokedex-pad-background");
 const pantalla = document.querySelector(".pantalla-negra");
 
 let isOn = false;
+let currentIndex = null;
 let encendido = false;
 let todosLosPokemones = [];
 let haciaAbajo = false;
@@ -197,7 +200,6 @@ async function fetchPokemonDataBeforeRedirect(id) {
     ]);
     return { pokemon, pokemonSpecies };
   } catch (error) {
-    console.error("Error desde fetchPokemonDataBeforeRedirect ");
     return false;
   }
 }
@@ -370,7 +372,6 @@ async function fetchPokemonByType(type) {
     const pokemonList = pokemon.map((entry) => entry.pokemon);
     return pokemonList;
   } catch (error) {
-    console.error("Error al buscar por tipo de Pokémon");
     return [];
   }
 }
@@ -472,12 +473,6 @@ async function mostrarDetallesPokemon(nombrePokemon) {
       }
       progressBar.style.top = `${height}%`;
     });
-
-    console.log(pokemon);
-  } else {
-    console.error(
-      "No se pudo encontrar el contenedor para mostrar los detalles del Pokémon."
-    );
   }
 }
 
@@ -532,6 +527,32 @@ typeButtons.forEach((button) => {
     }
   });
 });
+
+//  FUNCIONES PARA PASAR POKEMON CON LAS FLECHAS
+async function mostrarPokemonPorId(id) {
+  const pokemonIndex = todosLosPokemones.findIndex(
+    (pokemon) => pokemon.id === id
+  );
+
+  if (pokemonIndex !== -1) {
+    currentIndex = pokemonIndex;
+    await mostrarDetallesPokemon(todosLosPokemones[currentIndex].name);
+  }
+}
+
+async function mostrarSiguientePokemon() {
+  if (currentIndex < todosLosPokemones.length - 1) {
+    currentIndex++;
+    await mostrarDetallesPokemon(todosLosPokemones[currentIndex].name);
+  }
+}
+
+async function mostrarPokemonAnterior() {
+  if (currentIndex > 0) {
+    currentIndex--;
+    await mostrarDetallesPokemon(todosLosPokemones[currentIndex].name);
+  }
+}
 
 verTodos.addEventListener("click", () => {
   listaPokemon.innerHTML = "";
@@ -606,3 +627,9 @@ inputPokemon.addEventListener("click", () => {
 });
 
 inputPokemon.addEventListener("keyup", manejarBusqueda);
+
+siguientePokemonBtn.addEventListener("click", mostrarSiguientePokemon);
+
+anteriorPokemonBtn.addEventListener("click", mostrarPokemonAnterior);
+
+
