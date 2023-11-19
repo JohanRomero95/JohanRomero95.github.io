@@ -248,24 +248,22 @@ input {
 /* Estilo para el input válido */
 input:valid {
   border-bottom: 2px solid var(--color-verde); /* Borde inferior verde */
-  /*  */
+}
+input:invalid {
+  border-bottom: 2px solid var(--color-rojo);
+}
 
-  /* Estilo para el input inválido */
-  input:invalid {
-    border-bottom: 2px solid var(--color-rojo); /* Borde inferior rojo */
-  }
+.error-message {
+  display: none; /* Oculta el mensaje de error por defecto */
+}
 
-  .error-message {
-    display: none; /* Oculta el mensaje de error por defecto */
-  }
-  input:invalid + .error-message {
-    display: block; /* Muestra el mensaje de error cuando el input es inválido */
-    color: var(--color-rojo); /* Color del mensaje de error */
-  }
+input:invalid + .error-message {
+  display: block; /* Muestra el mensaje de error cuando el input es inválido */
+  color: var(--color-rojo); /* Color del mensaje de error */
+}
 
-  @media (min-width: 320px) {
-    .toast {
-      top: 16.5%;
-    }
+@media (min-width: 320px) {
+  .toast {
+    top: 16.5%;
   }
 }
